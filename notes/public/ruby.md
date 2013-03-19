@@ -457,6 +457,16 @@ its packaged extensions.
 prefer the standard C multiline comment. (/* .. */)
 
 
+
+Berkeley Software Engineering for Software as a Service
+https://www.coursera.org/saas
+
+Ruby Trick Shots:
+http://www.youtube.com/watch?feature=player_embedded&v=gIEMKOI_Y
+
+An introduction to Proc, Lambdas and Closures in Ruby
+http://www.youtube.com/watch?v=VBC-G6hahWA
+
 :symbols in Ruby
 
 http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols
