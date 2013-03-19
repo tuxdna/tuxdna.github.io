@@ -42,3 +42,15 @@ Then we can infer following relationship:
     y !-> x   ( y doesn't imply x )
     
 Therefore x is the key.
+
+
+GDBM and Berkeley DB
+
+http://www.mitchr.me/SS/exampleCode/DB.html
+
+What is Berkeley DB:
+
+http://doc.gnu-darwin.org/intro/dbis.html
+
+http://cxwangyi.wordpress.com/2010/10/10/how-to-use-berkeley-db/
+
