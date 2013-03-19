@@ -39,3 +39,31 @@ Dynamic plugin
 Static plugin
 
     plugin_init and plugin_is_GPL_compatible not required
+
+
+## Linking with GCC
+
+Static and Dynamic Linking with GCC, assuming you are using the GNU binutils, do
+
+    # gcc a.o -Wl,-Bstatic -lfoo -Wl,-Bdynamic -lbar
+
+This is largely (and on many platforms, entirely) a function of the
+linker, not the compiler per se.  The compiler driver ("gcc" or "g++",
+etc) can pass arbitrary (comma-separated) options to the linker with -Wl,
+so you need to read the man page for the linker you're using[\*], figure out
+which options to pass to it, and then feed those to gcc/g++.  For example,
+on Solaris it's something like
+
+    gcc a.o b.o ... z.o -Wl,-B,static -lfoo -Wl,-B,dynamic -lbar
+
+and the linker receives
+
+    ld ..... -B static -lfoo -B dynamic -lbar ....
+
+
+Run 'gcc --print-prog-name=ld' to get the full path to ld; then you
+can investigate that binary and determine which one is in use.
+
+setenv LD_OPTIONS      -Bstatic
+
+The simplest way to set the load path is through the environment variable LD_LIBRARY_PATH. 
