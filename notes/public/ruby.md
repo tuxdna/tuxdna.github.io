@@ -1,5 +1,13 @@
 # Ruby Programming Language
 
+ * 1995 - started by Yukihiro Matsumoto
+ * 2000 - first english book - Programming Ruby
+ * Ruby - influenced by Python, Perl, Lisp, Smalltalk
+ * Strongly Typed, Late Binding
+ * Runs on VM, Garbage Collected, Object Oriented
+ * Single Inheritance, Mxins
+ * Duck Typing
+
 Containers, blocks and interators are core concepts in Ruby
 
 ## Basic data and variables
@@ -563,3 +571,70 @@ Add testcases:
 Add documentation
 
 
+# More
+
+Gems
+
+SysAdmin:
+
+ FileUtils
+
+ NetSSH
+
+ Ruby One-liners
+
+    ruby -rzlib -e 'print Zlib::Inflate.new.inflate(STDIN.read)' < ./74/c757240ec596063af8cd273ebd9f67073e1208
+
+ Pipes and Fifo
+
+ CLI Arguments
+
+ Ruby On Android
+
+ Ruboto / JRuby
+
+ <http://stackoverflow.com/questions/133719/how-can-i-read-a-password>
+
+Where is Ruby used at present?
+ * web
+ * system admin 
+ * tooling
+ * text processing
+
+Basic Data Types / Variables
+ * String
+ * Numeric
+ * Array
+ * Hash
+ * Symbol
+
+Control Structures
+ * if / elsif / else / end
+ * while / end
+ * case / when / end
+
+Regular Expressions
+
+Code Blocks
+ * curly braces
+ * do / end
+
+Lambda / Proc / yield
+
+Continuations
+
+Methods
+
+Everything ( except fixnums ) is pass-by-reference
+
+Iterators
+
+Basic IO
+
+CLI
+
+Exeption Handling
+
+JRuby
+
+Ruby On Rails
