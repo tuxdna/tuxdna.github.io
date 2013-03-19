@@ -1,2 +1,1 @@
-NOTES_PATH=File.join(Dir.pwd, "notes")
-
+NOTES_PATH=File.join(Dir.pwd, "notes", "public")
