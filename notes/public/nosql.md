@@ -55,4 +55,18 @@ OrientDB uses RB+Tree ( RB Tree + B+ Tree )
 
 NoSQLDatabases.org
 
-For MongoDB - http://nosql.mypopescu.com/post/1378460012/mongodb-and-cap-theorem
+
+## MongoDB and Ruby/Rails
+
+For MongoDB - <http://nosql.mypopescu.com/post/1378460012/mongodb-and-cap-theorem>
+
+    db.collectoion.getIndexes()
+    db.collection.ensureIndex({column_name:1})
+
+Indexes in MongoDB <http://www.mongodb.org/display/DOCS/Indexes>
+
+Atomic operations in MongoDB <http://www.mongodb.org/display/DOCS/Atomic+Operations>
+
+Mongoid and Rails
+
+    bundle exec rake db:mongoid:create_indexes
