@@ -65,3 +65,17 @@ Monty Hall Problem
 
 Monty Hall Letter
 
+
+## Predicitive Matching of Document Reviewers
+
+For every Document and Topics, find the correlation among them.
+ * Document d1 has k percentage of Topic t1
+ * Document d1 has k percentage of Topic t2
+ * Document d1 has k percentage of Topic t3 etc.
+
+Important keywords:
+ * precision
+ * recall
+ * response
+
+Glossary: <http://ai.stanford.edu/~ronnyk/glossary.html>
