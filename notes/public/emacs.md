@@ -1649,3 +1649,37 @@ I use the following code in .emacs with Emacs ERC to get notified using notify-s
 
 
 
+## Emacs Code Browser
+
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;; Emacs Code Browse stuff starts
+    ;;
+    ;; ecb <--- semantic, eieio, speedbar
+    ;; semantic <--- eieio, speedbar
+    
+    
+    ;; setting up eieio
+    (add-to-list 'load-path "~/.emacs.d/eieio-0.17/")
+    
+    ;; setting up speedbar
+    (add-to-list 'load-path "~/.emacs.d/speedbar-0.14beta4/")
+    
+    ;; setting up Semantic
+    (add-to-list 'load-path "~/.emacs.d/semantic-1.4.4/")
+    (setq semantic-load-turn-everything-on t)
+    (require 'semantic-load)
+    
+    ;; setting up ECB
+    (setq load-path
+          (append (list nil "~/.emacs.d/ecb-2.32/")
+                  load-path))
+    
+    (require 'ecb)
+    (require 'ecb-autoloads)
+    ;;
+    ;; Emacs Code Browse stuff ends
+    ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    
+    ;; Activate ECB now
+    (ecb-activate)
+    
