@@ -14,7 +14,7 @@ get '/' do
   
   paths = files.map do |f|
     rel_path = f.split(NOTES_PATH)[-1]
-  end
+  end.sort
 
   paths.map { |p| "<a href='/show#{p}'>#{p}</a>" }.join("<br/>")
 end
