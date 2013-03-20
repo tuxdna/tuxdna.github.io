@@ -1,19 +1,33 @@
 # Git notes
 
 ## Git SVN:
-git stash
-git svn fetch
-git svn rebase
-git stash pop
 
-git rebase -i git-svn # use pick/squash properly and edit messages
-git rebase -i --abort
+Workflow <http://blog.shinetech.com/?p=150>
 
+    git stash
+    git svn fetch
+    git svn rebase
+    git stash pop
+
+Interactive rebase
+
+    git rebase -i git-svn # use pick/squash properly and edit messages
+    git rebase -i --abort
+
+## Git Recipes
+
+Git merge from upstream, replacing local changes
+
+    git merge -s recursive -Xtheirs
+
+Git change summary in /tmp/change-summary.txt
+
+    git log --reverse | grep -v '^[[:space:]]*$'  | grep -v '^commit ' | grep -v '^Author:' | grep -v '^Date:' | grep -v git-svn-id | cut -c5- > /tmp/change-summary.txt
 
 ## Understanding Git
-<http://stackoverflow.com/questions/261557/what-do-i-need-to-read-to-understand-how-git-works>
 
-<http://blog.shinetech.com/?p=150>
+Question: <http://stackoverflow.com/questions/261557/what-do-i-need-to-read-to-understand-how-git-works>
+
 
 Git internals from the bottom-up: <http://newartisans.com/2008/04/git-from-the-bottom-up/>
 
