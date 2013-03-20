@@ -1,4 +1,5 @@
 # Java Programming Language
+
 ## Java Quick reference
  * null, true, false are not keywords in java, they are literals
  * every local variable needs to be initialized, otherwise compiler says: variable `<variable_name>` might not have been initialized
@@ -36,3 +37,13 @@ A:
  * finalize - http://www.janeg.ca/scjp/gc/finalize.html
  * finally - http://download.oracle.com/javase/tutorial/essential/exceptions/finally.html
 
+## Java Max Heap Size
+
+In java 1.6.0_21 or later, or so...
+
+    $ java -XX:+PrintFlagsFinal -version 2>&1 | grep MaxHeapSize
+    uintx MaxHeapSize                         := 12660904960      {product}
+
+## Java Concurrency
+
+<http://www.vogella.com/articles/JavaConcurrency/article.html>
