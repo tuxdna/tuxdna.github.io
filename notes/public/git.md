@@ -152,3 +152,23 @@ Exapmple
     mkdir /tmp/xyz
     git archive master | tar -x -C /tmp/xyz
 
+
+# Git Out of Memory
+
+When the git repository is very big, then `git gc` fails
+
+    $ git gc
+    Counting objects: 39827, done.
+    Delta compression using up to 4 threads.
+    warning: suboptimal pack - out of memory  
+    fatal: Out of memory, malloc failed (tried to allocate 268048385 bytes)
+    error: failed to run repack
+
+    $ ps -ef | grep -v grep | grep 'git pack-objects'
+    tuxdna   31631 31617  1 12:43 pts/1    00:00:01 git pack-objects --keep-true-parents --honor-pack-keep --non-empty --all --reflog --local --delta-base-offset /tmp/code/.git/objects/pack/.tmp-31617-pack
+
+Solution
+
+    $ git repack -a -d --depth=250 --window=250
+
+Reference <http://metalinguist.wordpress.com/2007/12/06/the-woes-of-git-gc-aggressive-and-how-git-deltas-work/>
