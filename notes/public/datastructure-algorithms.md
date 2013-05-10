@@ -21,3 +21,6 @@
 
  * an extension of 2-3-4 tree represented in terms of a binary tree
 
+## Sparse Matrix
+
+ * [Sparse Matrix Data Structures](http://www.cs.indiana.edu/classes/p573/notes/sparse/sparsemat.html)
