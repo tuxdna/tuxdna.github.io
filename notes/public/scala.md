@@ -193,6 +193,8 @@ Functions have *no side effects* i.e. they can be replaced with their values
       override def toString = name + ", " + age
     }
 
+When a class doesn't extend anyother class, scala.AnyRef class is implicitly used as the parent class.
+
 ### Objects
 
     object Employee {
@@ -232,6 +234,14 @@ There is more to Scala
  * Monads
  * Annotations
 
+#### Case Classes
+
+How does a `class` differ from a `case class`?
+ * new keyword is not mamdatory to create instances of case classes
+ * constructor parameters get getter functions by default
+ * `equals` and `hashCode` have a default implementation based on instance structure; also for `toString`
+ * can be used in pattern matching construct to capture values
+
 ### Using Scala as a scripting language
 
 Example: `employee.scala`
@@ -249,6 +259,36 @@ Ouptput:
     Employee 1: Tom, 21
 
 
+## Extended Backus Naur form (EBNF)
+
+    | denotes an alternative
+    [...] an option ( 0 or 1 ) times
+    {...} a repetition ( 0 or more) times
+
+    Type         = SimpleType | FunctionType
+    FunctionType = SimpleType '=>' Type
+                   | '(' [Types] ')' '=>' Type
+    SimpleType   = Ident
+    Types        = Type {',' Type}
+
+    Expr         = InfixExpr | FunctionExpr
+                   | if '(' Expr ')' Expr else Expr
+    InfixExpr    = PrefixExpr | InfixExpr Operator InfixExpr
+    Operator     = ident
+    PrefixExpr   = [ '+' | '-' | '!' | '~' ] SimpleExpr
+    SimpleExpr   = ident | literal | SimpleExpr '.' ident | Block
+    FunctionExpr = Bindings '=>' Expr
+    Bindings     = ident [ ':' SimpleType ]
+                   | '(' [Binding { ',' Binding}] ')'
+    Binding      = ident [ ':' Type ]
+    Block        = '{' { Def ';' } Expr '}'
+    Def          = FunDef | ValDef
+    FunDef       = def ident { '(' [ Parameters ] ')' }
+                    [ ':' Type ] '=' Expr
+    ValDef       = val ident [':' Type] '=' Expr
+    Parameter    = ident ':' [ '=>' ] Type
+    Parameters   = Parameter {',' Parameter}
+    
 
 ## Where to learn more Scala
 
