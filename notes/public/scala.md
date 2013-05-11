@@ -24,6 +24,10 @@ Scala is compatible with Java
  * Scala is high level
  * Scala is statically typed ( vs dynamically typed )
 
+## Does Scala make you a better Java programmer?
+ 
+This is a very interesting question. For the one thing is that yes Scala does make you a better programmer with its beautiful and concise syntax for FP as compared to Java. For second, when you talk about becoming a better Java programmer. Yes it does. Now, I try to think of functions in Java as function objects, which can be passed around and, can be treated as first order functions.
+
 ### What can you do with Scala today?
 
  * Write web applications: [Play](http://www.playframework.com/) and [Lift](http://liftweb.net/) web frameworks
@@ -241,6 +245,7 @@ How does a `class` differ from a `case class`?
  * constructor parameters get getter functions by default
  * `equals` and `hashCode` have a default implementation based on instance structure; also for `toString`
  * can be used in pattern matching construct to capture values
+ * Generics
 
 ### Using Scala as a scripting language
 
@@ -289,6 +294,11 @@ Ouptput:
     Parameter    = ident ':' [ '=>' ] Type
     Parameters   = Parameter {',' Parameter}
     
+
+## Scala caveats
+
+ * Scala Development tools are not so great yet.
+ * Compilation is relatively slow
 
 ## Where to learn more Scala
 
