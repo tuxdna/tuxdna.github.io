@@ -30,7 +30,7 @@ Supervised - given a dataset where right answers were known
 
 Unsupervised
 
-Reinforced Learning
+Reinforcement Learning
 
 Recommender Systems
 
