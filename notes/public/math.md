@@ -15,3 +15,8 @@
  * Bijection, Injection, Surjection, Onto, one-to-one, argument, image, domain, codomain: [Bijection, injection and surjection](http://en.wikipedia.org/wiki/Bijection,_injection_and_surjection) on Wikipedia
 
 
+## Probabililty 
+
+ * [Gaussian or Normal Distribution](http://en.wikipedia.org/wiki/Normal_distribution)
+
+
