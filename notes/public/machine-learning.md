@@ -26,9 +26,24 @@ Supervised - given a dataset where right answers were known
 
    * normal equation
 
- * classification - discreete valued output
+ * Classification - discreete valued output
 
 Unsupervised
+
+ * Clustering
+ 
+   * [K-Means Clustering](http://en.wikipedia.org/wiki/K-means_clustering)
+
+     * 1. Take an initial set of k points as means
+
+     * 2. Make k clusters by associating every point with the nearest mean-point.
+
+     * 3. For each of the k clusters formed in previous step, find the centroid of the cluster.
+
+     * 4. Repate 2-3 steps until centroid have converged, or until a limit on iterations has reached.
+
+    Step 2 is the expectation step, and step 3 is the maximization step. Therefore, this algorithm is also a variant of generalized [exptectation-maximization algorithm](http://en.wikipedia.org/wiki/Expectation-maximization_algorithm).
+
 
 Reinforcement Learning
 
@@ -36,10 +51,8 @@ Recommender Systems
 
 
 
+References:
 
-Machine learning with Ruby
+ * [Machine Learning and Data Mining in Ruby and R](http://www.williamhertling.com/2010/04/machine-learning-and-data-mining-in.html)
 
-http://www.williamhertling.com/2010/04/machine-learning-and-data-mining-in.html
-
-http://public.iwork.com/document/?a=p127243307&d=ruby-machine-learning-posting.key
 
