@@ -1,0 +1,222 @@
+---
+layout: page
+title: "Emacs Lisp"
+description: "Learning Emacs Lisp"
+---
+
+{% include JB/setup %}
+
+
+    ================================================================================
+    Learning Emacs Lisp:
+    ================================================================================
+    
+    key definition template:
+    
+    (defun function-name (arguments...)
+     "optional-documentation..."
+     (interactive augument-passing-info)
+     body...)
+    
+    You need to usderstand the following:
+     an atom,  a list,  an S-expression?
+    fundamental functions, car, textttcdr, and cons
+    procedural controls in Emacs Lisp, if and cond, and he illustrates loops
+    regular expressions
+    Lambda function -- The lambda function is the cornerstone of functional computing theory
+    
+    
+    an Atom:
+    ==================================================
+    In a list, atoms are separated from each other by whitespace. They can be right 
+    next to a parenthesis.
+    
+    In Lisp, certain kinds of atom, such as an array, can be separated into parts; 
+    but the mechanism for doing this is different from the mechanism for splitting 
+    a list. As far as list operations are concerned, the atoms of a list are 
+    unsplittable.
+    
+    In addition, text between double quotation marks 'even sentences or paragraphs' 
+    is an atom. Here is an example:
+         '(this list includes "text between quotation marks.")
+    
+    a List:
+    ==================================================
+    a list looks like this: '(rose violet daisy buttercup). This list is preceded 
+    by a single apostrophe. It could just as well be written as follows, which 
+    looks more like the kind of list you are likely to be familiar with:
+    
+         '(rose
+           violet
+           daisy
+           buttercup)
+    
+    In Lisp, both data and programs are represented the same way; that is, they 
+    are both lists of words, numbers, or other lists, separated by whitespace 
+    and surrounded by parentheses. (Since a program looks like data, one program 
+    may easily serve as data for another; this is a very powerful feature of 
+    Lisp.) (Incidentally, these two parenthetical remarks are not Lisp lists, 
+    because they contain ; and . as punctuation marks.)
+    
+    '(rose violet daisy buttercup)
+    (+ 2 2)
+    '(this list had (a list inside it))
+    
+    Technically speaking, a list in Lisp consists of parentheses surrounding 
+    atoms separated by whitespace or surrounding other lists or surrounding both 
+    atoms and other lists. A list can have just one atom in it or have nothing in 
+    it at all. A list with nothing in it looks like this: (), and is called the 
+    empty list. Unlike anything else, an empty list is considered both an atom 
+    and a list at the same time.
+    
+    
+    
+    S-expression:
+    ==================================================
+    The printed representation of both atoms and lists are called symbolic 
+    expressions or, more concisely, s-expressions. The word expression by itself can
+    refer to either the printed representation, or to the atom or list as it is held
+    internally in the computer. Often, people use the term expression
+    indiscriminately.
+    
+    
+    
+    HERE WE GO FURTHER:
+    ==================================================
+    The single apostrophe, ', that I put in front of some of the example lists in
+    preceding sections is called a quote; when it precedes a list, it tells Lisp to 
+    do nothing with the list, other than take it as it is written. But if there is 
+    no quote preceding a list, the first item of the list is special: it is a 
+    command for the computer to obey.
+    
+    
+    Based on what we have seen, we can now start to figure out what the Lisp 
+    interpreter does when we command it to evaluate a list. First, it looks to see 
+    whether there is a quote before the list; if there is, the interpreter just 
+    gives us the list. On the other hand, if there is no quote, the interpreter 
+    looks at the first element in the list and sees whether it has a function 
+    definition. If it does, the interpreter carries out the instructions in the 
+    function definition. Otherwise, the interpreter prints an error message.
+    
+    Complications
+    ================================================================================
+    
+    Now, for the first complication. In addition to lists, the Lisp interpreter
+    can evaluate a symbol that is not quoted and does not have parentheses around 
+    it. The Lisp interpreter will attempt to determine the symbol's value as a 
+    variable. This situation is described in the section on variables. (See 
+    Variables.)
+    
+    The second complication occurs because some functions are unusual and do not 
+    work in the usual manner. Those that don't are called special forms. They are 
+    used for special jobs, like defining a function, and there are not many of them. 
+    In the next few chapters, you will be introduced to several of the more 
+    important special forms.
+    
+    The third and final complication is this: if the function that the Lisp 
+    interpreter is looking at is not a special form, and if it is part of a list, 
+    the Lisp interpreter looks to see whether the list has a list inside of it. 
+    If there is an inner list, the Lisp interpreter first figures out what it 
+    should do with the inside list, and then it works on the outside list. If 
+    there is yet another list embedded inside the inner list, it works on that one 
+    first, and so on. It always works on the innermost list first. The interpreter 
+    works on the innermost list first, to evaluate the result of that list. The 
+    result may be used by the enclosing expression.
+    
+    Otherwise, the interpreter works left to right, from one expression to the next.
+    
+    
+    A symbol can have any value attached to it or, to use the jargon, we can bind the
+    variable to a value: to a number, such as 72; to a string, "such as this"; to 
+    a list, such as (spruce pine oak); we can even bind a variable to a function 
+    definition.
+    
+    There are several ways by which a variable can be given a value. One of the 
+    ways is to use either the function set or the function setq. Another way is to 
+    use let .
+    
+    (set 'flowers '(rose violet daisy buttercup))
+    
+    'flowers --> flowers.
+    flowers --> (rose violet daisy buttercup)
+    (set 'flowers nil)
+    (set 'flowers (rose violet daisy buttercup)) --> Lisp error: (void-function rose)
+    (set flowers '(rose violet daisy buttercup)) --> Lisp error: (setting-constant nil)
+    
+    When you use set without quoting its first argument, the first argument is 
+    evaluated before anything else is done. If you did this and flowers did not have 
+    a value already, you would get an error message that the Symbol's value as variable 
+    is void; on the other hand, if flowers did return a value after it was evaluated, 
+    the set would attempt to set the value that was returned. There are situations where 
+    this is the right thing for the function to do; but such situations are rare.
+    
+    The combination of set and a quoted first argument is so common that it has its 
+    own name: the special form setq.
+    
+    (setq carnivores '(lion tiger leopard)) --> (lion tiger leopard)
+    
+    With set, the expression would look like this:
+    
+    (set 'carnivores '(lion tiger leopard)) --> (lion tiger leopard)
+    
+    Also, setq can be used to assign different values to different variables. The 
+    first argument is bound to the value of the second argument, the third argument 
+    is bound to the value of the fourth argument, and so on.
+    
+    (setq trees '(pine fir oak maple)
+               herbivores '(gazelle antelope zebra))
+    
+    trees --> (pine fir oak maple)
+    herbivores --> (gazelle antelope zebra)
+    
+         (setq counter 0)                ; Let's call this the initializer.
+         (setq counter (+ counter 1))    ; This is the incrementer.
+         counter                         ; This is the counter.
+    
+    
+    (concat "abc" "def") --> "abcdef"
+    (substring "The quick brown fox jumped." 16 19)  --> "fox"
+    (concat "The " (number-to-string (+ 2 fill-column)) " red foxes.") --> "The 72 red foxes."
+    
+    Variable Number of Arguments:
+    
+    (+) --> 0
+    (*) --> 1
+    (+ 3) --> 3
+    (* 5) --> 5
+    (+ 1 2 3 4) --> 10
+    
+    Wrong Argument type:
+    
+    (+ 2 'hello) --> Lisp error: (wrong-type-argument number-or-marker-p hello)
+    
+    The message Function:
+    
+    (message "This message appears in the echo area!")
+    
+    If there are %d, %s in quoted string of characters, the message function does not print 
+    the %s etc.  as such, but looks to the argument that follows the string.
+    
+    (message "The name of this buffer is: %s." (buffer-name))
+    (message "The value of fill-column is %d." fill-column)
+    
+         (message "There are %d %s in the office!"
+                  (- fill-column 14) "pink elephants")
+    
+    
+         (message "He saw %d %s"
+                  (- fill-column 32)
+                  (concat "red "
+                          (substring
+                           "The quick brown foxes jumped." 16 21)
+                          " leaping."))
+    
+    
+    (switch-to-buffer (other-buffer))
+    
+    (format-time-string "%Y-%m-%d-%H-%M-%S")
+    (format-time-string "%H:%M")
+    (setq hour (format-time-string "%H"))
+    
+
+
