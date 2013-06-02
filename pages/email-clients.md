@@ -1,8 +1,10 @@
 ---
 layout: page
-title: "Akka"
+title: "Email Clients"
 description: ""
 ---
+
+{% include JB/setup %}
 
 # Email Clients
 

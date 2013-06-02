@@ -1,8 +1,11 @@
 ---
 layout: page
-title: "Akka"
-description: ""
+title: "Artificial Intelligence"
+description: "AI Basics"
 ---
+
+{% include JB/setup %}
+
 
 # Artificial Intelligence
 

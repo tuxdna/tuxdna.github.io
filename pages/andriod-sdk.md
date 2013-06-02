@@ -1,8 +1,11 @@
 ---
 layout: page
-title: "Akka"
-description: ""
+title: "Android SDK"
+description: "Very old notes"
 ---
+
+{% include JB/setup %}
+
 
 # Android SDK
 
