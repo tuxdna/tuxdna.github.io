@@ -1,20 +1,14 @@
-tuxdna.github.io
-================
+---
+layout: page
+title: DNA of the TUX
+tagline: 
 
-Now being converted to use [Jekyll](http://jekyllrb.com/).
+---
 
-Originally this was [jots](http://github.com/tuxdna/jots).
+## Welcome
 
-jots
-====
+[website](http://tuxdna.in/)
 
-A simple Sinatra application to convert notes taken in Markdown / TXT format into HTML.
+## To-Do
 
-INSTALL
-====
-
-    $ gem install sinatra shotgun maruku
-    $ shotgun server.rb
-
-Now point your browser to http://localhost:9393/
-
+Coming soon
