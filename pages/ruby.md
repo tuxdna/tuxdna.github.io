@@ -83,19 +83,19 @@ A Ruby symbol is a thing that has both a number (integer) representation and a s
 
 String
 
- * capitalize
- * upcase / upcase!
+    * capitalize
+    * upcase / upcase!
 
-use single quotes
+    use single quotes
     '\\' # becomes "\\" which is actually a single slash
 
-use double quotes
+    use double quotes
 
     "this is a string" # a simple string
     "hello #{name}" # interpolated code in strings
 
-use %q and %Q with {} or [] or <> opening and closing pairs
-otherwise same character is used
+    use %q and %Q with {} or [] or <> opening and closing pairs
+    otherwise same character is used
 
     %q/this is a string/
     %q{this is a string}
@@ -428,70 +428,48 @@ Threads:
     sudo gem install -V rdoc-data
 
 
-Ruby References
+Ruby References:
 
-http://blade.nagaokaut.ac.jp/ruby/ruby-talk/index.shtml
-
-http://www.ruby-lang.org/
-
-http://www.37signals.com/
-
-http://www.ruby-doc.org
-
-http://api.rubyonrails.com/
-
-http://www.ruby-forum.com/
-
-http://www.rubyforums.com/forumdisplay.php?f=1
-
-http://www.sitepoint.com/forums/forumdisplay.php?f=227
-
-http://railsforum.com/
-
-http://www.rubyinside.com/
-
-http://redhanded.hobix.com/
-
-http://www.rubyist.net/~matz/ <http://www.rubyist.net/%7Ematz/>
-
-http://www.planetrubyonrails.com/
+ * http://blade.nagaokaut.ac.jp/ruby/ruby-talk/index.shtml
+ * http://www.ruby-lang.org/
+ * http://www.37signals.com/
+ * http://www.ruby-doc.org
+ * http://api.rubyonrails.com/
+ * http://www.ruby-forum.com/
+ * http://www.rubyforums.com/forumdisplay.php?f=1
+ * http://www.sitepoint.com/forums/forumdisplay.php?f=227
+ * http://railsforum.com/
+ * http://www.rubyinside.com/
+ * http://redhanded.hobix.com/
+ * http://www.rubyist.net/~matz/ <http://www.rubyist.net/%7Ematz/>
+ * http://www.planetrubyonrails.com/
 
 
 Generally, the developers of Ruby should be familiar with the source code
 and the style of development used by the team. To be clear, the following
 guidelines should be honored when checking into Subversion:
 
+
     * All check-ins should be described in the ChangeLog, following the GNU
-conventions. (Many Ruby core developers use Emacs add-log mode, which can be
-accessed with the command C-x 4 a.)
+      conventions. (Many Ruby core developers use Emacs add-log mode, which can be
+      accessed with the command C-x 4 a.)
     * Check-in dates should be given in Japan Standard Time (UTC+9).
     * The bulleted points from your ChangeLog should also be placed in the
-Subversion commit message. This message will be automatically mailed to the
-Ruby-CVS list after you commit.
+      Subversion commit message. This message will be automatically mailed to the
+      Ruby-CVS list after you commit.
     * K&R function declarations are used throughout Ruby's source code and
-its packaged extensions.
+      its packaged extensions.
     * Please, do not use C++-style comments (//), Ruby's maintainers instead
-prefer the standard C multiline comment. (/* .. */)
+      prefer the standard C multiline comment. (/* .. */)
 
 
 
-Berkeley Software Engineering for Software as a Service
-https://www.coursera.org/saas
-
-Ruby Trick Shots:
-http://www.youtube.com/watch?feature=player_embedded&v=gIEMKOI_Y
-
-An introduction to Proc, Lambdas and Closures in Ruby
-http://www.youtube.com/watch?v=VBC-G6hahWA
-
-:symbols in Ruby
-
-http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols
-http://onestepback.org/index.cgi/Tech/Ruby/SymbolsAreNotImmutableStrings.red
-
-
-Daemons
-http://daemons.rubyforge.org/classes/Daemonize.html
+ * [Berkeley Software Engineering for Software as a Service](https://www.coursera.org/saas)
+ * [Ruby Trick Shots](http://www.youtube.com/watch?feature=player_embedded&v=gIEMKOI_Y)
+ * [An introduction to Proc, Lambdas and Closures in Ruby](http://www.youtube.com/watch?v=VBC-G6hahWA)
+ * [Understanding :symbols in Ruby](http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols)
+ * [Symbols are immutable](http://onestepback.org/index.cgi/Tech/Ruby/SymbolsAreNotImmutableStrings.red)
+ * [Daemons](http://daemons.rubyforge.org/classes/Daemonize.html)
 
 
     Time.at(Time.local(2007, 10, 5)-Time.now).strftime("%d days %H hours %M minutes and %S seconds")
