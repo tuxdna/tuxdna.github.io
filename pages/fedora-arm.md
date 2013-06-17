@@ -100,10 +100,10 @@ A simple program on QEMU/ARM: <https://github.com/tuxdna/arm-experiments/tree/ma
     target-arm/helper.c: CPUARMState *cpu_arm_init(const char *cpu_model)
     
 
-LED Register 0x10000008
- - http://infocenter.arm.com/help/topic/com.arm.doc.dui0224i/Cachbhig.html
- -  only  [7:0] bits of [31:0] total
- -  rest of the [31:8] bits of [31:0] total are reserved
+ * [LED Register 0x10000008](http://infocenter.arm.com/help/topic/com.arm.doc.dui0224i/Cachbhig.html)
+
+    only  [7:0] bits of [31:0] total
+    rest of the [31:8] bits of [31:0] total are reserved
 
 ## Why Fedora ARM / RPM packaging?
  * proven technology already in use on may of the most popular Distros
