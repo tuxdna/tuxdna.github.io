@@ -18,27 +18,61 @@ description: "Notes on Machine Learning"
 
 ## Kinds of Learning
 
-### Supervised - given a dataset where right answers were known
+ Supervised Learning: _Regression_, _Classification_
 
- * Regression - predict continuous valued output
+ Unsupervised Learning: _Clustering_, _Collaborative Filtering_ / _Recommeder Systems_, _Reinforcement Learning_
 
-   * linear regression
+### Supervised
 
-    * with one variable - univariate
+Supervised - Given a dataset where right answers were known, the machine learns to estimate the right answers for unknow data.
 
-    * multiple variables - multivariate
+#### Regression
 
-    * hypotheses, cost function and its minimization
+Regression - predict continuous valued output
 
-   * gradient descent algorithm; convex function; batch gradient descent
+ * Linear Regression
 
-   * normal equation
+   * Univariate - with one variable
 
- * Classification - discreete valued output
+   * Multivariate - multiple variables
+
+   * Hypotheses, Cost Function and its Minimization
+
+ * Techniques Used
+
+   * Gradient Descent Algorithm
+
+   * Convex Function
+
+   * Batch Gradient Descent
+
+   * Normal Equation
+
+#### Classification
+
+ Classification involves discreete valued output.
+
+ * Machine makes decision based on experience, and in the process, emulate certain forms of human decision making.
+
+ * Used in Predictive Analytics and Spam Detection
 
 ### Unsupervised
 
 #### Clustering
+
+##### Components
+
+     - An Algorithm
+     - A notion of Similarity / Dissimilarity
+     - Stop Condition
+
+##### Objective
+
+ * Objective is to group similar / related items together
+
+##### Grouping items
+
+Items are generally grouped together using a mean or centroid of the measures ( similarity / dissimilarity ).
 
  * Clustering
  
@@ -84,4 +118,7 @@ description: "Notes on Machine Learning"
 
  * [Machine Learning and Data Mining in Ruby and R](http://www.williamhertling.com/2010/04/machine-learning-and-data-mining-in.html)
 
+ * [Machine Learning with Apache Mahout](http://www.slideshare.net/danielglauser/machine-learning-with-apache-mahout)
+
+ * [Introduction to Apache Mahout](http://www.slideshare.net/gsingers/intro-to-apache-mahout)
 
