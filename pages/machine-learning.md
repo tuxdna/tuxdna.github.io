@@ -122,3 +122,7 @@ Items are generally grouped together using a mean or centroid of the measures ( 
 
  * [Introduction to Apache Mahout](http://www.slideshare.net/gsingers/intro-to-apache-mahout)
 
+ * [Apache Taste](http://people.apache.org/~isabel/site/taste.html)
+ 
+ * [Apache Mahout Recommender Tutorial](http://www.slideshare.net/Cataldo/tutoria-mahout-recommendation)
+ 
