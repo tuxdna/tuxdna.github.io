@@ -114,6 +114,74 @@ Items are generally grouped together using a mean or centroid of the measures ( 
 #### Reinforcement Learning
 
 
+# Apache Mahout
+
+
+## Recommendation Algorithms
+
+Input data takes a form of preferences. Preference is a tuple of three values: userId, itemId, preferenceValue. Mahout has its own data structures to store these values efficiently. It has FastMap, FastByIdMap, FastIDSet etc. The preferences are stored in memory using GenericPreference, GenericPreferenceArray etc. 
+
+These values can be loaded from files or from databases or other storage media. For file backed storage, Mahout has FileDataModel class. It is simple to use.
+
+For recommendation algorithms, first we create a DataModel for user, item and preferences. Then we select a similarity measure i.e. UserSimilarity or ItemSimilarity. Next, we select a class that creates a neighbourhood of users or items based on a certain criteria. This criteria can be a threshold value of similarity or a limit on top N items.
+
+So we have a DataModel, a UserSimilarity ( or ItemSimilarity ) and a UserNeighborhood. Finally we create Recommender. Mahout has many different kinds of recommenders already built into it e.g.: GenericUserBasedRecommender, SlopeOneRecommender etc.
+
+Order of business here is:
+
+ * Choose a data model and load preference data
+
+ * Choose a similiarity metric
+ 
+ * Define a neighborhood
+ 
+ * Choose an algorithm implementation for recommendations
+
+ * Now we are ready for recommendations.
+ 
+Another point to note is that we would need to evaluate the quality of recommendations that Mahout is giving us. For this there is a recommender evaluation framework already in place. Two metrics are:
+
+ * RecommenderEvaluator: measures the divergence of estimated recommendation value from the actual recommendation value
+ 
+ * RecommenderIRStatsEvaluator: measures precision and recall of the recommendation
+
+Apache Mahout has all of this already implemented.
+
+Lets look at MySQL based data model.
+
+### MySQL Data Model
+
+Create Taste preferences:
+
+	CREATE TABLE taste_preferences (
+	  user_id BIGINT NOT NULL,
+      item_id BIGINT NOT NULL,
+      preference FLOAT NOT NULL,
+      PRIMARY KEY (user_id, item_id),
+      INDEX (user_id),
+      INDEX (item_id));
+
+    mysql> create database mia01;
+    Query OK, 1 row affected (0.00 sec)
+
+    mysql> use mia01;
+    Database changed
+
+    mysql> CREATE TABLE taste_preferences ( user_id BIGINT NOT NULL, item_id BIGINT NOT NULL, preference FLOAT NOT NULL, PRIMARY KEY (user_id, item_id), INDEX (user_id), INDEX (item_id));
+    Query OK, 0 rows affected (0.11 sec)
+
+
+Create item similarity table:
+
+  
+    CREATE TABLE taste_item_similarity (
+      item_id_a BIGINT NOT NULL,
+      item_id_b BIGINT NOT NULL,
+      similarity FLOAT NOT NULL,
+      PRIMARY KEY (item_id_a, item_id_b));
+	  
+
+
 ## References:
 
  * [Machine Learning and Data Mining in Ruby and R](http://www.williamhertling.com/2010/04/machine-learning-and-data-mining-in.html)
@@ -125,4 +193,9 @@ Items are generally grouped together using a mean or centroid of the measures ( 
  * [Apache Taste](http://people.apache.org/~isabel/site/taste.html)
  
  * [Apache Mahout Recommender Tutorial](http://www.slideshare.net/Cataldo/tutoria-mahout-recommendation)
+ 
+ * [First Steps with Apache Mahout - Classification](http://skife.org/mahout/2013/02/14/first_steps_with_mahout.html)
+
+ * [Apache Mahout and MySQL](http://ssc.io/deploying-a-massively-scalable-recommender-system-with-apache-mahout/)
+ 
  
