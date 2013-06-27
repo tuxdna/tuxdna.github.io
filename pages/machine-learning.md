@@ -116,6 +116,15 @@ Items are generally grouped together using a mean or centroid of the measures ( 
 
 # Apache Mahout
 
+Introduction to Apache Mahout: It started as a sub project of Lucene. (More to do with Hadoop.)
+Sean Owen started Taste Project ( Recommender Systems ) in 2005.
+
+Requirements for Setting Up:
+ * Java
+ * IDE - Eclipse
+ * Maven
+ * Mahout distribution ( preferably the latest version )
+ * Hadoop
 
 ## Recommendation Algorithms
 
@@ -275,3 +284,4 @@ Log Likelihood test: an expression of how unlikely it is for two users to have s
  * [Apache Mahout and MySQL](http://ssc.io/deploying-a-massively-scalable-recommender-system-with-apache-mahout/)
  
  
+
