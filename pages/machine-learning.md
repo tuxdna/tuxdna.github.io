@@ -267,6 +267,8 @@ Also know as Jackard coefficent is:
 Log Likelihood test: an expression of how unlikely it is for two users to have so much overlap, given the total number of items out there and the number of items each user has a preference for.
 
 
+
+
 ## References:
 
  * [Machine Learning and Data Mining in Ruby and R](http://www.williamhertling.com/2010/04/machine-learning-and-data-mining-in.html)
@@ -283,5 +285,5 @@ Log Likelihood test: an expression of how unlikely it is for two users to have s
 
  * [Apache Mahout and MySQL](http://ssc.io/deploying-a-massively-scalable-recommender-system-with-apache-mahout/)
  
- 
+ * [Correlation explained](http://www.socialresearchmethods.net/kb/statcorr.php)
 
