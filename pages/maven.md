@@ -61,3 +61,15 @@ Site Directory Structure: <http://www.sonatype.com/books/mvnref-book/reference/s
 
     mvn install:install-file -Dfile=lib/abcd-4.1.0.jar -DgroupId=com.abcd.java -DartifactId=abcd -Dversion=4.1.0 -Dpackaging=jar
 
+
+## Execute a Java Class from Maven
+
+Consider that you want to execute a class named org.tuxdna.App which takes an argument:
+
+    mvn exec:java -Dexec.mainClass=org.tuxdna.App -Dexec.args="arg1"
+    
+
+This will generate the regular Maven output. To supress that, and only see the class output, add -q option:
+
+    mvn -q exec:java -Dexec.mainClass=org.tuxdna.App -Dexec.args="arg1"
+
