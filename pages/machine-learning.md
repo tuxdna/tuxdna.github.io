@@ -267,6 +267,18 @@ Also know as Jackard coefficent is:
 Log Likelihood test: an expression of how unlikely it is for two users to have so much overlap, given the total number of items out there and the number of items each user has a preference for.
 
 
+## Components and their compatibility
+
+Boolean Preference Data Model 
+
+ * is not compatible with PearsonCorrelation / EuclideanDistance
+
+ * is compatible with LogLikelihood
+ 
+
+In case of zero difference in estimate and actual preference, by the evauluator, we can always do a precision / recall evaluation -- using IRStats evaluator.
+
+
 
 
 ## References:
