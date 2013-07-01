@@ -267,7 +267,7 @@ Also know as Jackard coefficent is:
 Log Likelihood test: an expression of how unlikely it is for two users to have so much overlap, given the total number of items out there and the number of items each user has a preference for.
 
 
-## Components and their compatibility
+### Components and their compatibility
 
 Boolean Preference Data Model 
 
@@ -278,7 +278,91 @@ Boolean Preference Data Model
 
 In case of zero difference in estimate and actual preference, by the evauluator, we can always do a precision / recall evaluation -- using IRStats evaluator.
 
+### Slope One recommender
 
+Algorithm
+
+
+    Preprocessing
+
+      for every item i
+        for every other item j
+          for every user u expressing preference for both i and j
+            add the difference in u's preference for i and j to an average
+
+    SlopeOne Algorithm(u)
+    
+      for every item i the user u expresses no preference for
+        for every item j that user u expresses a preference for
+          find the average preference between j and i
+          add this diff to u's preference value for j
+          add this to a running average
+       return the top items, raned by these averages
+
+
+    How to implement?
+    
+    Following Code is Scala'ish
+    
+
+    I = { set of all items }
+    U = { set of all users }
+    M = { (i,u,p): i in I, u in U, p is a preference value }
+    
+    AvgDiff = ZeroTriangularMatrix(I.size)
+    
+    for(i <- I) {
+      val sumDiff = 0
+      val allExcept_i = I.filter(x => x != i)
+      val count = 0
+      for( j <- allExcept_i)) {
+        for( (u, pi, pj) <- M.findUsersFor(i,j)) {
+          sumDiff += pi - pj
+          count += 1
+        }
+      }
+      AvgDiff(i)(j) = sumDiff / count
+    }
+    
+    def slopeOne(u: User, n: Int) = {
+      val notRatedItems = I.filter( x => ! u.preferredItems.contains(x))
+      val ratedItems = u.preferredItems();
+      val preferenceList = listForAllItems(I)
+      for( i <- notRatedItems ) {
+        val sumForI = 0
+        val count = 0
+        for( j <- ratedItems ) {
+          val avgDiff = AvgDiff(i)(j)
+          sumForI += u.preferenceFor(j) + avgDiff
+          count += 1
+        }
+        val avgForI = sumForI / count
+        preferenceList(i) = avgForI
+      }
+      preferenceList.sortBy(average).reverse().take(n)
+    }
+    
+
+SlopeOne Gotchas
+
+The difference does not take into account the number of users who provided the ratings. Even if the rating is given for two items only by one user, its weightage will be same as rating given by many more users. This can be mitigated by using weigthing schemes:
+
+ * Count based weighting - more users means more weightage ( rating is more reliable )
+ * Standard deviation based weighting - less standard deviation means more reliable ratings
+
+Diff calculation is a resource intesive process. It uses a lot of memory as well as CPU. This can be done over offline storage. The compution can also be distributed using Hadoop.
+
+### SVD Recommender
+
+Uses Matrix factorization to reduce the total data points, also summarizing them. 
+
+Issues: Slow to compute. All SVD is done in memory.
+
+Produces good and meaningful results.
+
+### Linear interpolation based Recommender
+
+TDB
 
 
 ## References:
