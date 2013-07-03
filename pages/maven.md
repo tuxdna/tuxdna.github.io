@@ -30,26 +30,30 @@ description: "Notes on Apache Maven"
     
 ## Generate JavaDoc
 
-Maven JavaDoc plugin <http://maven.apache.org/plugins/maven-javadoc-plugin/>
+[Maven JavaDoc plugin](http://maven.apache.org/plugins/maven-javadoc-plugin/)
+
+Invoke:
  
-    mvn javadoc:javadoc # http://maven.apache.org/plugins/maven-javadoc-plugin/
+    mvn javadoc:javadoc 
 
 ## Generate PDF Documentation
 
-Maven PDF plugin <http://maven.apache.org/plugins/maven-pdf-plugin/usage.html>
 
 Maven APT documentation 
 
- * <http://maven.apache.org/doxia/references/apt-format.html>
- * <http://maven.apache.org/doxia/references/doxia-apt.html#Figure_extensions>
+ * [APT Format](http://maven.apache.org/doxia/references/apt-format.html)
+ * [Add images into APT](http://maven.apache.org/doxia/references/doxia-apt.html#Figure_extensions)
+ * [Maven Veolcity templating](http://velocity.apache.org/site/tools/velocity-site-doxia-renderer/index.html)
 
-Maven Veolcity templating <http://velocity.apache.org/site/tools/velocity-site-doxia-renderer/index.html>
+Refer to [Maven PDF plugin](http://maven.apache.org/plugins/maven-pdf-plugin/usage.html)
 
-    mvn pdf:pdf         # http://maven.apache.org/plugins/maven-pdf-plugin/
+[Generating PDF documentation](http://maven.apache.org/plugins/maven-pdf-plugin/)
+
+    mvn pdf:pdf         
 
 ## Generate Site Documentation
 
-Site Directory Structure: <http://www.sonatype.com/books/mvnref-book/reference/site-generation-sect-dir-struct.html>
+Maven Site Directory [structure](http://www.sonatype.com/books/mvnref-book/reference/site-generation-sect-dir-struct.html)
 
     mvn site:site
     
@@ -59,7 +63,12 @@ Site Directory Structure: <http://www.sonatype.com/books/mvnref-book/reference/s
 
 ## Add local dependency:
 
+Install a local library to mvn repo:
+
     mvn install:install-file -Dfile=lib/abcd-4.1.0.jar -DgroupId=com.abcd.java -DartifactId=abcd -Dversion=4.1.0 -Dpackaging=jar
+
+Add a local dependency to maven configration [here](http://www.mkyong.com/maven/how-to-include-library-manully-into-maven-local-repository/)
+
 
 
 ## Execute a Java Class from Maven

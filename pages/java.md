@@ -54,4 +54,10 @@ In java 1.6.0_21 or later, or so...
 
 ## Java Concurrency
 
-<http://www.vogella.com/articles/JavaConcurrency/article.html>
+[Java Concurrency](http://www.vogella.com/articles/JavaConcurrency/article.html)
+
+
+## Java Errors
+
+*java.lang.IllegalStateException: WRITER*: Resolution: Once Writer is obtained, use it only. Don't fetch an OptputStream or another Writer.
+
