@@ -13,7 +13,12 @@ description: "All about Emacs [ Operating System :-) ]"
 
 # How to generate tags:
 
+Install on exuberant ctags on Ubuntu
+
+    sudo aptitude install exuberant-ctags
+
 Create a Makefile with following target
+
 
     tags:
     	etags.ctags -a -e -f TAGS --tag-relative -R app lib import_tool

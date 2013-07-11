@@ -390,3 +390,5 @@ Sample code:
  
  * [Correlation explained](http://www.socialresearchmethods.net/kb/statcorr.php)
 
+ * [Third Generation Tools for Realizing Machine Learning Algorithms](http://strataconf.com/strata2013/public/schedule/detail/27390)
+
