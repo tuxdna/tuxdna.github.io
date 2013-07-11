@@ -362,7 +362,14 @@ Produces good and meaningful results.
 
 ### Linear interpolation based Recommender
 
-TDB
+Implementd as KNN  ( K Nearest Neighbours ).
+
+Sample code:
+
+    m = new DataModel();
+    ItemSimilarity s = new LogLikelihoodSimilarity(m);
+    Optimizer optimizer = new NonNegativeQuadraticOptimizer();
+    r = new KnnItemBasedRecommender(m,s,optimizer,10);
 
 
 ## References:
