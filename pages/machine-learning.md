@@ -142,7 +142,7 @@ Challenges in Collaborative Filtering:
 
 #### Reinforcement Learning
 
-
+TBD
 
 # Apache Mahout
 
@@ -308,7 +308,27 @@ Boolean Preference Data Model
 
 In case of zero difference in estimate and actual preference, by the evauluator, we can always do a precision / recall evaluation -- using IRStats evaluator.
 
-### Slope One recommender
+### User based recommender
+
+*User based* recommenders first finds similar users and then sees what they like.
+
+### Item based recommender
+
+
+*Item based* recommenders first sees what the user likes and then finds similar items.
+
+Algorithm
+
+
+    for every item i that u has no preference for yet
+        for every item j that u has a preference for
+            compute a similarity s between i and j
+            add u's preference for j, weighted by s, to a running average
+	    
+    return the top items, ranked by weighted average
+
+
+#### Slope One recommender
 
 Algorithm
 
@@ -400,6 +420,11 @@ Sample code:
     ItemSimilarity s = new LogLikelihoodSimilarity(m);
     Optimizer optimizer = new NonNegativeQuadraticOptimizer();
     r = new KnnItemBasedRecommender(m,s,optimizer,10);
+
+### Cluseter-based recommendation
+
+A variant on user-based CF, where items are recommendd to clusters of similar users. First all users are paritioned into clusters. Now the recommendations are computed for group of users belonging to the cluster.
+
 
 
 ## References:
