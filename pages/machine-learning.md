@@ -109,9 +109,39 @@ Items are generally grouped together using a mean or centroid of the measures ( 
 
 #### Recommender Systems
 
+Recommender systems are classified in the following ways:
+
  * Collaborative Filtering
 
+ * Content based approach 
+
+ * Hybrid models ( CF + Content Based )
+
+
+Recommendations can be of 3 kinds:
+
+ * User based - producing recommendations based on, and only based on knowledge of user's relationship to items, and not the properties of items themselves ( e.g. KNN based algorithm )
+
+ * Item based - build an item-item matrix for relationship among pairs. using the data on current user, infer his tase. ( e.g. Slop One algorithm )
+
+ * Content based
+ 
+Also read the [Wipedia article](http://en.wikipedia.org/wiki/Collaborative_filtering)
+
+Challenges in Collaborative Filtering: 
+
+ * data sparsity
+ * cold start
+ * scalabiliy
+ * synonyms
+ * grey sheep
+ * black sheep
+ * shilling attacks
+ * diversity
+
+
 #### Reinforcement Learning
+
 
 
 # Apache Mahout
