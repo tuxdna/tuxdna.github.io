@@ -69,6 +69,15 @@ Install a local library to mvn repo:
 
 Add a local dependency to maven configration [here](http://www.mkyong.com/maven/how-to-include-library-manully-into-maven-local-repository/)
 
+Add a library by relative path:
+
+    <dependency>
+      <artifactId>rome-fetcher</artifactId>
+      <groupId>org.rometools</groupId>
+      <scope>system</scope>
+      <version>1.0</version>
+      <systemPath>${basedir}/core/lib/runtime/rome-fetcher-1.0.jar</systemPath>
+    </dependency>
 
 
 ## Execute a Java Class from Maven
@@ -82,3 +91,31 @@ This will generate the regular Maven output. To supress that, and only see the c
 
     mvn -q exec:java -Dexec.mainClass=org.tuxdna.App -Dexec.args="arg1"
 
+## Add extra source folders to the project
+
+Use the build-helper-maven-plugin
+
+     <build>
+       <plugins>
+         <plugin>
+           <groupId>org.codehaus.mojo</groupId>
+           <artifactId>build-helper-maven-plugin</artifactId>
+           <executions>
+             <execution>
+               <phase>generate-sources</phase>
+               <goals>
+                 <goal>add-source</goal>
+               </goals>
+               <configuration>
+                 <sources>
+                   <source>core/src/java/main</source>
+                   <source>core/src/java/resource</source>
+                   <source>core/src/java/test</source>
+                   <source>core/src/java/test-resources</source>
+                 </sources>
+               </configuration>
+             </execution>
+           </executions>
+         </plugin>
+       </plugins>
+     </build>
