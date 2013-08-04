@@ -179,4 +179,8 @@ Solution
 
     $ git repack -a -d --depth=250 --window=250
 
-Reference <http://metalinguist.wordpress.com/2007/12/06/the-woes-of-git-gc-aggressive-and-how-git-deltas-work/>
+Reference
+
+ * [the woes of “git gc –aggressive” (and how git deltas work)](http://metalinguist.wordpress.com/2007/12/06/the-woes-of-git-gc-aggressive-and-how-git-deltas-work/)
+
+ * [What is a one-sentence explanation of how Accurev works?](http://stackoverflow.com/questions/4620312/what-is-a-one-sentence-explanation-of-how-accurev-works)
