@@ -73,7 +73,7 @@ BASE Theorem is the motivation behind many of the now popular NoSQL databases. T
 
 ## ACID compliance
 
-ACID
+[ACID](http://en.wikipedia.org/wiki/ACID) properties
 
  - atomic - all or nothing
  - consistent - any operation should move from one consistent state to another
