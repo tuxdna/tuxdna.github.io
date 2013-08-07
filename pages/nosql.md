@@ -7,35 +7,71 @@ description: "What is NoSQL?"
 {% include JB/setup %}
 
 
-# NoSQL Databases
+# What is NoSQL ?
 
-NoSQL databases
+NoSQL stands for *Not only SQL*, ( it doesn't mean *not SQL* ). This basically means that a traditional SQL database is a NoSQL database too.
 
- - sacrifice some of the ACID properties
- - simpler API ( with less powerful SQL like queries ) e.g. Hive, MongoDB, Dynamo, Cassandra
+## Comparison of NoSQL with traditional databases
 
-Decision tree for NoSQL databases / RDBMSes
+NoSQL databases essentially
 
-replication
+ * sacrifice some of the ACID properties
 
-partition
+ *  simpler API ( with less powerful SQL like queries ) e.g. Hive, MongoDB, Dynamo, Cassandra
 
- - static
- - dynamic
+## Classification based on the type of data
 
-distributed hash table ( DHT ) 
+Here I am listing some categories and a few well know examples:
 
-consistency
+ * *Wide Column Store / Column Families*: HBASE, Cassandra
+ * *Document Store*: CouchDB, MongoDB, ElasticSearch
+ * *Key Value / Tuple Store*: Memcache, Redis
+ * *Graph Databases*: Neo4J
+ * *Multimodel Databases*: OrientDB ( both document and graph data )
+ * *Object Databases*: ZODB ( basically a distributed Object database, where you can call methods on objects stored in DB )
+ * *Grid / Cloud Databases*: Infinispan ( a part of JBoss project ) is basically a distributed key-value store
+ * *XML Databases*: eXist DB ( I have yet to figure out why it exists ? :-) )
+ * *Multidimensional Databases*: RASDAMAN. These database are used in scientific research, business intelligence and analytics. ( heard of data cube ? ), basically for drilling down into huge amount of data metrics.
+ * *Multivalue Databases*: TBD
+ * *Event Sourcing*: Event Store ( for complex event processing - CEP )
+ * and many other uncategorized
+ 
+That may sound like a lot of data, and yes it is. Understanding one single database in itself is a big task, let alone all the above categories.
 
-key / value or document / object
+## How do we decide which database to use?
 
-BASE - basically available, soft state and eventually consistent
+Basicall you can choose from a variety of parameters. Here are some decisoin criteria for NoSQL databases / RDBMSes
 
-CAP theorem - Out of Consistency, Availability and Partition tolerance, a system can only guarantee two of the three at a time.
+ * replication: Do you need replication?
+
+ * partition: What kind of partitions do you want?
+
+    - static
+    - dynamic
+
+ * distributed hash table ( DHT ): How do you want your data to be distributed over a set of data nodes?
+
+ * consistency : Do you need consistency?
+
+ * key / value or document / object: What is your data like?
+
+
+## BASE Theorem
+
+[BASE](http://www.johndcook.com/blog/2009/07/06/brewer-cap-theorem-base/) - basically available, soft state and eventually consistent.
+
+BASE Theorem is the motivation behind many of the now popular NoSQL databases. Think of your wall posts apparing after a dealy on a friend's Facebook wall. That is eventual consistency.
+
+## CAP Theorem
+
+[CAP](http://en.wikipedia.org/wiki/CAP_theorem) Theorem - Out of Consistency, Availability and Partition tolerance, a system can only guarantee two of the three at a time.
 
  - Consistency - all nodes see the same data at the same time
  - Availability - a guarantee that every request receives a response about whether it was successful or failed
  - Partition tolerance - the system continues to operate despite arbitrary message loss
+
+
+## ACID compliance
 
 ACID
 
@@ -55,27 +91,14 @@ partition tolerance - has an effect on number of requests
     
 
 
-Papers:
+Papers and links:
 
- - Google BigTable : HBase, Big Table
- - Apache Dynamo : Dynamo, Cassandra
-
-OrientDB uses RB+Tree ( RB Tree + B+ Tree )
-
-NoSQLDatabases.org
+ - [Google BigTable](http://research.google.com/archive/bigtable.html) : HBase, Big Table
+ - [Apache Dynamo](http://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) : Dynamo, Cassandra
+ - [OrientDB](https://github.com/orientechnologies/orientdb#orientdb) uses RB+Tree ( RB Tree + B+ Tree )
 
 
-## MongoDB and Ruby/Rails
+## More exhaustive list of databases
 
-For MongoDB - <http://nosql.mypopescu.com/post/1378460012/mongodb-and-cap-theorem>
+Read more at: [NoSQL-Databases.org](http://NoSQL-Databases.org)
 
-    db.collectoion.getIndexes()
-    db.collection.ensureIndex({column_name:1})
-
-Indexes in MongoDB <http://www.mongodb.org/display/DOCS/Indexes>
-
-Atomic operations in MongoDB <http://www.mongodb.org/display/DOCS/Atomic+Operations>
-
-Mongoid and Rails
-
-    bundle exec rake db:mongoid:create_indexes
