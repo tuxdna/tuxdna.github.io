@@ -175,3 +175,19 @@ http://rubydoc.info/gems/delayed_job/3.0.0/file/README.textile
 
 OmniAuth - https://github.com/intridea/omniauth/wiki
 
+## Other unrelated stuff
+
+### MongoDB and Ruby/Rails
+
+For MongoDB - <http://nosql.mypopescu.com/post/1378460012/mongodb-and-cap-theorem>
+
+    db.collectoion.getIndexes()
+    db.collection.ensureIndex({column_name:1})
+
+Indexes in MongoDB <http://www.mongodb.org/display/DOCS/Indexes>
+
+Atomic operations in MongoDB <http://www.mongodb.org/display/DOCS/Atomic+Operations>
+
+Mongoid and Rails
+
+    bundle exec rake db:mongoid:create_indexes
