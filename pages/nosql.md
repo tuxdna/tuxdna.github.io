@@ -9,7 +9,7 @@ description: "What is NoSQL?"
 
 # What is NoSQL ?
 
-NoSQL stands for *Not only SQL*, ( it doesn't mean *not SQL* ). This basically means that a traditional SQL database is a NoSQL database too.
+[NoSQL](http://en.wikipedia.org/wiki/NoSQL) stands for *Not only SQL*, ( it doesn't mean *not SQL* ). This basically means that a traditional SQL database is a NoSQL database too.
 
 ## Comparison of NoSQL with traditional databases
 
