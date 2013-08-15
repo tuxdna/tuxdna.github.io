@@ -425,6 +425,14 @@ Sample code:
 
 A variant on user-based CF, where items are recommendd to clusters of similar users. First all users are paritioned into clusters. Now the recommendations are computed for group of users belonging to the cluster.
 
+## Clustering
+
+The process of grouping a set of physical or abstract objects into classes of similar objects is called *clustering*.
+
+A *cluster* is a collection of data objects that are similar to one another within the same cluster and are dissimilar to the objects in other clusters.
+
+Process of clustering involves an *algorithm*, a *simimarity/dissimarity metric*, and a *stop condition*.
+
 
 
 ## References:
