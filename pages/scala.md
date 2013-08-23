@@ -1,4 +1,4 @@
-o---
+---
 layout: page
 title: "Scala"
 description: "Notes on Scala Programming Language"
