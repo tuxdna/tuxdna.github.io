@@ -6,8 +6,6 @@ description: "Notes on Scala Programming Language"
 
 {% include JB/setup %}
 
-{:toc}
-
 # Scala Programming Language
 
 ## Introduction to Scala
@@ -166,13 +164,16 @@ Functions have *no side effects* i.e. they can be replaced with their values
 
 
 ### Hallmarks of Functional Programming
+
  * mapping
  * filtering
  * folding
  * reducing
 
 ## Object Oriented Programming in Scala
+
 ### Object Oriented
+
  * Decompose the problem into entities and interactions among entities
  * Each entity and their interaction is represented using class/object
   * internal state is the member variables
@@ -341,12 +342,14 @@ Ouptput:
 ### Forums
 
 ### Other Resources
+
  * [ScalaConf Japan 2013](http://scalaconf.jp/en/program/index.html)
  * [Unit Test Java code from Scala](http://blog.tmorris.net/posts/automated-unit-testing-your-java-using-scalacheck/)
  * [Code Examples for Programming in Scala](http://www.cs.helsinki.fi/u/wikla/OTS/Sisalto/examples/)
  * [Solutions to the Exercises in the "Scala By Example" Manual](http://metagear.de/articles/scala-exercises/index.html)
 
 ## References
+
  * [Scala: A Scalable Language](http://www.artima.com/scalazine/articles/scalable-language.html)
  * [Scala by-name parameters](http://locrianmode.blogspot.in/2011/07/scala-by-name-parameter.html)
  * [Scala assert/requre/assume](http://daily-scala.blogspot.in/2010/03/assert-require-assume.html)
