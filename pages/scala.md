@@ -303,6 +303,24 @@ Ouptput:
     Parameters   = Parameter {',' Parameter}
     
 
+
+
+## More Notes TBD
+
+ * Functional Programming
+ * Equational Reasoning: replace function with its value
+ * Functional Language: functions are fist class falues, encourages immutability
+ * Every statement has a return value ( and a type ) - `val a = 10`
+ * Compound expression has a return type as well
+ * Type inference
+ * Classes and Objects
+ * Class Inheritance
+ * Default constructor
+ * Predef object
+ * Case classes
+ * Functional Objects - those objects that do not have mutable state
+ * File processing
+
 ## Scala caveats
 
  * Scala Development tools are not so great yet.
@@ -330,3 +348,15 @@ Ouptput:
 
 ## References
  * [Scala: A Scalable Language](http://www.artima.com/scalazine/articles/scalable-language.html)
+ * [Scala by-name parameters](http://locrianmode.blogspot.in/2011/07/scala-by-name-parameter.html)
+ * [Scala assert/requre/assume](http://daily-scala.blogspot.in/2010/03/assert-require-assume.html)
+ * [Ordered trait](http://daily-scala.blogspot.in/2010/03/assert-require-assume.html)
+ * [_root_ package](http://stackoverflow.com/questions/687071/what-is-the-root-package-in-scala)
+ * [Nothing in Scala](http://www.scala-lang.org/api/current/index.html#scala.Nothing)
+ * [Partially applied functions](http://sandrasi-sw.blogspot.in/2012/03/understanding-scalas-partially-applied.html)
+ * [Currying in Scala](http://www.scala-lang.org/old/node/135)
+ * [Static variables and Scala](http://stackoverflow.com/questions/1888716/what-replaces-class-variables-in-scala)
+ * [Same method and variable name in Scala](http://stackoverflow.com/questions/6569132/scala-class-variable-name-hides-method-parameter-name)
+ * [Package namespace in Scala and C Sharp](http://alvinalexander.com/scala/scala-csharp-style-package-syntax-examples-curly-braces)
+ * [Trait extends class and vice-versa](http://stackoverflow.com/questions/12854941/why-can-a-scala-trait-extend-a-class)
+ * [Sealed classes](http://www.scala-lang.org/old/node/123)
