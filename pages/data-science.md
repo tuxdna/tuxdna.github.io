@@ -19,4 +19,8 @@ Includes things related to Machine Learning, Information Theory, Information Rer
 
  * [PCA for Dummies](http://georgemdallas.wordpress.com/2013/10/30/principal-component-analysis-4-dummies-eigenvectors-eigenvalues-and-dimension-reduction/)
  
+ * [Streaming, Statistics and Sufficient Statistics I ](http://www.youtube.com/watch?v=-QSkMcPmXN8)
+
+ * [Streaming, Statistics and Sufficient Statistics II](http://www.youtube.com/watch?v=twdbZI0lk94)
+ 
 
