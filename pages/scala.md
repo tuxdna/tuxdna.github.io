@@ -327,6 +327,10 @@ Ouptput:
  * Scala Development tools are not so great yet.
  * Compilation is relatively slow
 
+## sbt: Simple Build Tool
+
+ [Setup SBT](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html)
+
 ## Where to learn more Scala
 
 ### Books
