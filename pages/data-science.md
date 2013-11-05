@@ -23,4 +23,4 @@ Includes things related to Machine Learning, Information Theory, Information Rer
 
  * [Streaming, Statistics and Sufficient Statistics II](http://www.youtube.com/watch?v=twdbZI0lk94)
  
-
+ * [Streaming, Statistics and Sufficient Statistics Slides](http://simons.berkeley.edu/sites/default/files/docs/530/cormodeslides.pdf)
