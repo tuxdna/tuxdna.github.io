@@ -367,3 +367,9 @@ Ouptput:
  * [Package namespace in Scala and C Sharp](http://alvinalexander.com/scala/scala-csharp-style-package-syntax-examples-curly-braces)
  * [Trait extends class and vice-versa](http://stackoverflow.com/questions/12854941/why-can-a-scala-trait-extend-a-class)
  * [Sealed classes](http://www.scala-lang.org/old/node/123)
+ * [Futures and Promises](http://docs.scala-lang.org/overviews/core/futures.html)
+ * [StackOverflow: Dependency Injection in Scala](http://stackoverflow.com/questions/2563929/how-would-one-do-dependency-injection-in-scala)
+ * [Real-World Scala Dependency Injection](http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/)
+ * [Immutable R-Tree for Scala](http://making.meetup.com/post/64387936554/archery-an-immutable-r-tree-for-scala) 
+ * [Scala Community](http://www.scalacommunity.com/)
+
