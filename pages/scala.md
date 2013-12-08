@@ -244,7 +244,7 @@ There is more to Scala
  * Implicits
  * Lazy Evaluation
  * Parser Combinations
- * Monads
+ * Monads - [Scala Monads: Declutter Your Code With Monadic Design](https://www.youtube.com/watch?v=Mw_Jnn_Y5iA)
  * Annotations
 
 #### Case Classes
@@ -372,4 +372,4 @@ Ouptput:
  * [Real-World Scala Dependency Injection](http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/)
  * [Immutable R-Tree for Scala](http://making.meetup.com/post/64387936554/archery-an-immutable-r-tree-for-scala) 
  * [Scala Community](http://www.scalacommunity.com/)
-
+ * [Data Mining with Scala](https://thenewcircle.com/s/post/1528/data_mining_with_scala_at_identified_jan_prach_video)
