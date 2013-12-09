@@ -373,3 +373,5 @@ Ouptput:
  * [Immutable R-Tree for Scala](http://making.meetup.com/post/64387936554/archery-an-immutable-r-tree-for-scala) 
  * [Scala Community](http://www.scalacommunity.com/)
  * [Data Mining with Scala](https://thenewcircle.com/s/post/1528/data_mining_with_scala_at_identified_jan_prach_video)
+ * [Scala & Data Science](https://thenewcircle.com/s/post/1529/scala_and_data_science_fun_with_folks_from_linkedin_ebay_vitaly_gordon_chris_severs_video)
+
