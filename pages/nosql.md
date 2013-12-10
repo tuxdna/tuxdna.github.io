@@ -102,3 +102,17 @@ Papers and links:
 
 Read more at: [NoSQL-Databases.org](http://NoSQL-Databases.org)
 
+## MongoDB
+
+Using MongoDB
+
+ * [regex search in mongodb](http://stackoverflow.com/questions/10242501/how-to-find-a-substring-in-a-field-in-mongodb)
+
+Examples:
+
+    // search using regex
+    db.c01.find({"sourceurls": {$regex: //i}} )
+    // search array elements using regex
+    db.c01.find({"sourceurls": { $elemMatch : {$regex: /Monitoring/i}} } )
+
+
