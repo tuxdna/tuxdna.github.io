@@ -1,0 +1,228 @@
+---
+layout: page
+title: "R Language"
+description: "Notes on R Statistical Programming Language"
+---
+
+{% include JB/setup %}
+
+# R - Statistical Programming Language
+
+Installation
+
+Basic CLI usage
+
+And some tools
+
+# Install
+
+I am only going to describe how to install R on `Fedora`
+
+    $ sudo yum install -y R
+
+You can also install additional R packages - [Installing additional R packages on Linux](http://www.divms.uiowa.edu/help/linux/RPackage.html)
+
+    [tuxdna@lap01 ~]$ mkdir ~/Rlibs
+    [tuxdna@lap01 ~]$ export R_LIBS=~/Rlibs:$R_LIBS
+    > .libPaths()
+    [1] "/home/tuxdna/Rlibs"   "/usr/lib64/R/library" "/usr/share/R/library"
+    > library()
+    Warning message:
+    In library() :
+      libraries ‘/home/tuxdna/Rlibs’, ‘/usr/share/R/library’ contain no packages
+
+Lets check if we have Rcmdr installed or not:
+
+    > library(Rcmdr)
+    Error in library(Rcmdr) : there is no package called ‘Rcmdr’
+
+It isn't installed already, but we can easily install it as we have setup a local installation directory above.
+
+    > install.packages("Rcmdr")
+    > install.packages("rcmdrPlugin.epack")
+    > install.packages("rcmdrPlugin.kmggplot2")
+
+Now we can start R Commander as follows:
+
+    > library(Rcmdr)
+
+
+Transcript of what commands we learnt at the meetup
+
+    > library(Rcmdr)
+
+Use the GUI tool.
+
+    > ls()
+    [1] "iris"
+    > getwd()
+    [1] "/home/tuxdna"
+    > setwd("/home/tuxdna/testr")
+    > dir()
+    character(0)
+    > ls()
+    [1] "iris"
+    > getwd()
+    [1] "/home/tuxdna/testr"
+
+We can read data from a CSV file and use that as a dataset:
+
+    > read.csv()
+    > dataset2 = read.csv("books.csv")
+    > ls()
+    [1] "dataset2" "iris"
+    > head(dataset2)
+            Date              ISBN Amount
+    1 2008-04-12 978-1-9343561-0-4  39.45
+    2 2008-04-13 978-1-9343561-6-6  45.67
+    3 2008-04-14 978-1-9343560-7-4  36.95
+    > tail(dataset2)
+            Date              ISBN Amount
+    1 2008-04-12 978-1-9343561-0-4  39.45
+    2 2008-04-13 978-1-9343561-6-6  45.67
+    3 2008-04-14 978-1-9343560-7-4  36.95
+    > dataset3 = read.csv("donut.csv")
+    > ls()
+    [1] "dataset2" "dataset3" "iris"
+
+We can also describe the structure of a dataset ( column-wise ):
+
+    > str(dataset3)
+    'data.frame':	40 obs. of  13 variables:
+     $ x    : num  0.923 0.711 0.751 0.308 0.849 ...
+     $ y    : num  0.0135 0.9091 0.8366 0.418 0.5002 ...
+     $ shape: int  21 22 23 24 25 21 22 23 24 25 ...
+     $ color: int  2 2 2 1 1 2 2 2 1 2 ...
+     $ k    : int  4 3 3 5 5 6 4 1 5 4 ...
+     $ k0   : int  8 9 9 1 2 1 10 4 1 10 ...
+     $ xx   : num  0.852 0.506 0.564 0.095 0.721 ...
+     $ xy   : num  0.0125 0.6464 0.6284 0.1288 0.4247 ...
+     $ yy   : num  0.000183 0.826538 0.699845 0.174743 0.25022 ...
+     $ a    : num  0.923 1.154 1.124 0.519 0.985 ...
+     $ b    : num  0.0779 0.954 0.8728 0.8083 0.5225 ...
+     $ c    : num  0.645 0.46 0.42 0.209 0.349 ...
+     $ bias : int  1 1 1 1 1 1 1 1 1 1 ...
+    > ?read.csv
+    > 
+    > ls()
+    [1] "dataset2" "dataset3" "iris"
+    > str(dataset3)
+    'data.frame':	40 obs. of  13 variables:
+     $ x    : num  0.923 0.711 0.751 0.308 0.849 ...
+     $ y    : num  0.0135 0.9091 0.8366 0.418 0.5002 ...
+     $ shape: int  21 22 23 24 25 21 22 23 24 25 ...
+     $ color: int  2 2 2 1 1 2 2 2 1 2 ...
+     $ k    : int  4 3 3 5 5 6 4 1 5 4 ...
+     $ k0   : int  8 9 9 1 2 1 10 4 1 10 ...
+     $ xx   : num  0.852 0.506 0.564 0.095 0.721 ...
+     $ xy   : num  0.0125 0.6464 0.6284 0.1288 0.4247 ...
+     $ yy   : num  0.000183 0.826538 0.699845 0.174743 0.25022 ...
+     $ a    : num  0.923 1.154 1.124 0.519 0.985 ...
+     $ b    : num  0.0779 0.954 0.8728 0.8083 0.5225 ...
+     $ c    : num  0.645 0.46 0.42 0.209 0.349 ...
+     $ bias : int  1 1 1 1 1 1 1 1 1 1 ...
+    > ?read.csv
+    
+Plot command creats the graph:
+
+    > plot(dataset3)
+    > plot(dataset3)
+    > library(Rcmdr)
+    
+    
+A summary can obtained using summary command:
+    
+    > summary(dataset3)
+           x                 y               shape        color             k             k0    
+     Min.   :0.07388   Min.   :0.01352   Min.   :21   Min.   :1.000   Min.   :1.0   Min.   : 1  
+     1st Qu.:0.29765   1st Qu.:0.28346   1st Qu.:22   1st Qu.:1.000   1st Qu.:3.0   1st Qu.: 2  
+     Median :0.55612   Median :0.50326   Median :23   Median :2.000   Median :4.0   Median : 5  
+     Mean   :0.52253   Mean   :0.52174   Mean   :23   Mean   :1.675   Mean   :3.8   Mean   : 5  
+     3rd Qu.:0.75138   3rd Qu.:0.83848   3rd Qu.:24   3rd Qu.:2.000   3rd Qu.:5.0   3rd Qu.: 8  
+     Max.   :0.99003   Max.   :0.99336   Max.   :25   Max.   :2.000   Max.   :6.0   Max.   :10  
+           xx                 xy                yy                  a                b          
+     Min.   :0.005459   Min.   :0.01248   Min.   :0.0001828   Min.   :0.2056   Min.   :0.06189  
+     1st Qu.:0.088847   1st Qu.:0.07175   1st Qu.:0.0844977   1st Qu.:0.5782   1st Qu.:0.60101  
+     Median :0.309325   Median :0.15403   Median :0.2532847   Median :0.8438   Median :0.81892  
+     Mean   :0.350745   Mean   :0.26783   Mean   :0.3691088   Mean   :0.8006   Mean   :0.76226  
+     3rd Qu.:0.564565   3rd Qu.:0.39379   3rd Qu.:0.7030619   3rd Qu.:0.9766   3rd Qu.:0.98893  
+     Max.   :0.980157   Max.   :0.85617   Max.   :0.9867544   Max.   :1.3104   Max.   :1.27370  
+           c                bias  
+     Min.   :0.07151   Min.   :1  
+     1st Qu.:0.28370   1st Qu.:1  
+     Median :0.39801   Median :1  
+     Mean   :0.39153   Mean   :1  
+     3rd Qu.:0.50613   3rd Qu.:1  
+     Max.   :0.65786   Max.   :1  
+
+
+To define a new function:
+    
+    > fn1 = function(x) { 2*x + x^2 - 32 }
+    
+    > fn1
+    function(x) { 2*x + x^2 - 32 }
+    
+    > ls()
+    [1] "dataset2" "dataset3" "fn1"      "iris"
+    > summary(iris)
+      Sepal.Length    Sepal.Width     Petal.Length    Petal.Width          Species  
+     Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100   setosa    :50  
+     1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300   versicolor:50  
+     Median :5.800   Median :3.000   Median :4.350   Median :1.300   virginica :50  
+     Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199                  
+     3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800                  
+     Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500                  
+    > null
+
+
+To load a library:
+
+    > library(rattle)
+    Error in library("rattle") : there is no package called ‘rattle’
+    > 
+
+We can also load the data this way:
+
+    > data(iris)
+    > summary(iris)
+    > plot(iris$Sepal.Length, iris.$Species)
+    > iris[2,1]
+    > iris[1:20,1]
+    > iris[,5]
+    > boxplot(iris$Sepal.Length, iris.$Species)
+    > library(MASS)
+    > plot(iris$Sepal.Length, iris$Species)
+    > boxplot(iris$Sepal.Length, iris$Species)
+
+To get local and global help:
+    
+    ? local help
+    ?? global help
+    
+Here is an example of using [r-fiddle](http://www.r-fiddle.org/#/fiddle?id=9czNAA6v)
+
+    library(MASS)
+    data(Boston)
+    summary(Boston)
+    library(Hmisc)
+    attach(Boston)
+    summarize(medv, chas, median)
+    ajay = lm(medv~ptratio+chas+rm+black+nox)
+    summary(ajay)
+    par(mfrow=c(2,2))
+    plot(ajay)
+
+References:
+
+ * [R Commander](http://socserv.mcmaster.ca/jfox/Misc/Rcmdr/)
+ * [RMarkdown 1](http://jeromyanglim.blogspot.in/2012/05/getting-started-with-r-markdown-knitr.html) and [RMarkdown 2](http://www.rstudio.com/ide/docs/authoring/using_markdown)
+ * Machine Learning using - [rattle](http://rattle.togaware.com/) - R Data Miner - by [togaware.com](togaware.com)
+ * [Spatial Analysis - ggplot](http://spatial.ly/2012/02/great-maps-ggplot2/)
+ * [R Studio](www.rstudio.com)
+ * [Collaborative R in the cloud](www.statace.com)
+ * [plotly - Analyze and visualize data](www.plotly.com)
+ * Data and Visualization - [New Youk Frisk Stops](http://www.dundas.com/blog-post/visualizing-new-york-stop-frisk/)
+ * [Hjalmar-Gislason](http://decisionstats.com/2012/03/14/interview-hjalmar-gislason-ceo-of-datamarket-com/)
+ * [Christian-Mladenov](http://decisionstats.com/2013/11/18/interview-christian-mladenov-ceo-statace-excellent-and-hot-rstats-startup/)
+ * [Jeroen-Ooms](http://decisionstats.com/2013/03/18/interview-jeroen-ooms-opencpu-rstats/)

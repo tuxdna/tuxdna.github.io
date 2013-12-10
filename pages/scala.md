@@ -244,7 +244,7 @@ There is more to Scala
  * Implicits
  * Lazy Evaluation
  * Parser Combinations
- * Monads
+ * Monads - [Scala Monads: Declutter Your Code With Monadic Design](https://www.youtube.com/watch?v=Mw_Jnn_Y5iA)
  * Annotations
 
 #### Case Classes
@@ -360,6 +360,10 @@ Execution:
  * Scala Development tools are not so great yet.
  * Compilation is relatively slow
 
+## sbt: Simple Build Tool
+
+ [Setup SBT](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html)
+
 ## Where to learn more Scala
 
 ### Books
@@ -396,3 +400,11 @@ Execution:
  * [Package namespace in Scala and C Sharp](http://alvinalexander.com/scala/scala-csharp-style-package-syntax-examples-curly-braces)
  * [Trait extends class and vice-versa](http://stackoverflow.com/questions/12854941/why-can-a-scala-trait-extend-a-class)
  * [Sealed classes](http://www.scala-lang.org/old/node/123)
+ * [Futures and Promises](http://docs.scala-lang.org/overviews/core/futures.html)
+ * [StackOverflow: Dependency Injection in Scala](http://stackoverflow.com/questions/2563929/how-would-one-do-dependency-injection-in-scala)
+ * [Real-World Scala Dependency Injection](http://jonasboner.com/2008/10/06/real-world-scala-dependency-injection-di/)
+ * [Immutable R-Tree for Scala](http://making.meetup.com/post/64387936554/archery-an-immutable-r-tree-for-scala) 
+ * [Scala Community](http://www.scalacommunity.com/)
+ * [Data Mining with Scala](https://thenewcircle.com/s/post/1528/data_mining_with_scala_at_identified_jan_prach_video)
+ * [Scala & Data Science](https://thenewcircle.com/s/post/1529/scala_and_data_science_fun_with_folks_from_linkedin_ebay_vitaly_gordon_chris_severs_video)
+
