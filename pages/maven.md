@@ -119,3 +119,12 @@ Use the build-helper-maven-plugin
          </plugin>
        </plugins>
      </build>
+
+## Fetch the classpath for convenience
+
+You can also fetch a string of jar files that can be used to execute a class directly using java CLI:
+
+    $ mvn dependency:build-classpath
+	$ CLASSPATH=$(mvn dependency:build-classpath | grep -A1 'Dependencies classpath:' | tail -1)
+    $ java -cp $CLASSPATH com.package.SomeMainClass arg1 arg2 ...
+	
