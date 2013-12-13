@@ -50,7 +50,99 @@ We are going to create a new application like this:
 	$ mkdir ~/my-rails-applications/
 	$ cd ~/my-rails-applications/
     $ rails _3.2.0_  new forum
+      create  
+      create  README.rdoc
+      create  Rakefile
+      create  config.ru
+      create  .gitignore
+      create  Gemfile
+      create  app
+      create  app/assets/images/rails.png
+      create  app/assets/javascripts/application.js
+      create  app/assets/stylesheets/application.css
+      create  app/controllers/application_controller.rb
+      create  app/helpers/application_helper.rb
+      create  app/mailers
+      create  app/models
+      create  app/views/layouts/application.html.erb
+      create  app/mailers/.gitkeep
+      create  app/models/.gitkeep
+      create  config
+      create  config/routes.rb
+      create  config/application.rb
+      create  config/environment.rb
+      create  config/environments
+      create  config/environments/development.rb
+      create  config/environments/production.rb
+      create  config/environments/test.rb
+      create  config/initializers
+      create  config/initializers/backtrace_silencers.rb
+      create  config/initializers/inflections.rb
+      create  config/initializers/mime_types.rb
+      create  config/initializers/secret_token.rb
+      create  config/initializers/session_store.rb
+      create  config/initializers/wrap_parameters.rb
+      create  config/locales
+      create  config/locales/en.yml
+      create  config/boot.rb
+      create  config/database.yml
+      create  db
+      create  db/seeds.rb
+      create  doc
+      create  doc/README_FOR_APP
+      create  lib
+      create  lib/tasks
+      create  lib/tasks/.gitkeep
+      create  lib/assets
+      create  lib/assets/.gitkeep
+      create  log
+      create  log/.gitkeep
+      create  public
+      create  public/404.html
+      create  public/422.html
+      create  public/500.html
+      create  public/favicon.ico
+      create  public/index.html
+      create  public/robots.txt
+      create  script
+      create  script/rails
+      create  test/fixtures
+      create  test/fixtures/.gitkeep
+      create  test/functional
+      create  test/functional/.gitkeep
+      create  test/integration
+      create  test/integration/.gitkeep
+      create  test/unit
+      create  test/unit/.gitkeep
+      create  test/performance/browsing_test.rb
+      create  test/test_helper.rb
+      create  tmp/cache
+      create  tmp/cache/assets
+      create  vendor/assets/javascripts
+      create  vendor/assets/javascripts/.gitkeep
+      create  vendor/assets/stylesheets
+      create  vendor/assets/stylesheets/.gitkeep
+      create  vendor/plugins
+      create  vendor/plugins/.gitkeep
+         run  bundle install
+
+
+Now we have almost everything setup. So, we will first make sure that our application is under source control. This way we can track code changes, and collaborate with other team members as well.
+
     $ cd forum/
+    $ git init .
+    Initialized empty Git repository in /home/tuxdna/my-rails-applications/forum/.git/
+    $ git add .
+    $ git commit -m "Initial commit"
+
+If you get error with sqlite gem then do the following:
+
+	$ sudo aptitude install libsqlite3-dev
+	
+	OR
+	
+	$ sudo yum install libsqlite3-devel
+	
     $ bundle install
 
 Now lets inspect what's already been generated for us.
@@ -65,6 +157,9 @@ Start the application
 
     $ rails s
 
+Now visit this URL: http://localhost:3000/
+
+At this point we don't have anything configured in the application.
 
 ## Step 4: Preapare our data model
 
@@ -193,4 +288,7 @@ Nested Routes:
 
     Rails.application.routes.url_helpers.edit_movie_path(movie)
     Rails.application.routes.url_helpers.similar_path movie
+
+
+## Testing Rails Application
 
