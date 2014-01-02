@@ -47,8 +47,8 @@ Working with Rails versoin 3.0.0 :
 
 We are going to create a new application like this:
 
-	$ mkdir ~/my-rails-applications/
-	$ cd ~/my-rails-applications/
+    $ mkdir ~/my-rails-applications/
+    $ cd ~/my-rails-applications/
     $ rails _3.2.0_  new forum
       create  
       create  README.rdoc
@@ -145,6 +145,55 @@ If you get error with sqlite gem then do the following:
 	
     $ bundle install
 
+
+Gems required for a Rails application to run:
+
+    $ bundle show
+
+Gems included by the bundle:
+
+     * actionmailer (3.2.0)
+     * actionpack (3.2.0)
+     * activemodel (3.2.0)
+     * activerecord (3.2.0)
+     * activeresource (3.2.0)
+     * activesupport (3.2.0)
+     * arel (3.0.3)
+     * builder (3.0.4)
+     * bundler (1.3.5)
+     * coffee-rails (3.2.2)
+     * coffee-script (2.2.0)
+     * coffee-script-source (1.6.3)
+     * erubis (2.7.0)
+     * execjs (2.0.2)
+     * hike (1.2.3)
+     * i18n (0.6.9)
+     * journey (1.0.4)
+     * jquery-rails (3.0.4)
+     * json (1.8.1)
+     * mail (2.4.4)
+     * mime-types (1.25.1)
+     * multi_json (1.8.2)
+     * polyglot (0.3.3)
+     * rack (1.4.5)
+     * rack-cache (1.2)
+     * rack-ssl (1.3.3)
+     * rack-test (0.6.2)
+     * rails (3.2.0)
+     * railties (3.2.0)
+     * rake (10.1.0)
+     * rdoc (3.12.2)
+     * sass (3.2.12)
+     * sass-rails (3.2.6)
+     * sprockets (2.1.3)
+     * sqlite3 (1.3.8)
+     * thor (0.14.6)
+     * tilt (1.4.1)
+     * treetop (1.4.15)
+     * tzinfo (0.3.38)
+     * uglifier (2.3.3)
+    
+
 Now lets inspect what's already been generated for us.
 
 ### Inspect the development environment
@@ -213,11 +262,42 @@ We can also delete models
      rails destroy model Comments
 
 
+Using bundle exec:
+
+    $ bundle exec rails generate scaffold Topic name:string
+    $ bundle exec rails generate scaffold Post name:string
+    $ bundle exec rake db:migrate
+
+    $ bundle exec rake routes
+
+         posts GET    /posts(.:format)           posts#index
+               POST   /posts(.:format)           posts#create
+      new_post GET    /posts/new(.:format)       posts#new
+     edit_post GET    /posts/:id/edit(.:format)  posts#edit
+          post GET    /posts/:id(.:format)       posts#show
+               PUT    /posts/:id(.:format)       posts#update
+               DELETE /posts/:id(.:format)       posts#destroy
+        topics GET    /topics(.:format)          topics#index
+               POST   /topics(.:format)          topics#create
+     new_topic GET    /topics/new(.:format)      topics#new
+    edit_topic GET    /topics/:id/edit(.:format) topics#edit
+         topic GET    /topics/:id(.:format)      topics#show
+               PUT    /topics/:id(.:format)      topics#update
+               DELETE /topics/:id(.:format)      topics#destroy
+    
+    $ bundle exec rails generate scaffold User name:string userid:string password:string
+    
+    
 ## Step 3: Setup a database
 
 Make a MySQL database. However a SQLite database is already available.
 
 ## Step 4: Setup User Interface ( Views )
+
+Create a session controller
+
+    $ rails g controller sessions login home profile setting
+
 
 Generate controller
 
@@ -291,4 +371,12 @@ Nested Routes:
 
 
 ## Testing Rails Application
+
+# References
+
+ * http://net.tutsplus.com/tutorials/other/building-a-forum-from-scratch-with-ruby-on-rails/
+ * http://stackoverflow.com/questions/16846088/rails-server-does-not-start-could-not-find-a-javascript-runtime
+ * http://www.sitepoint.com/rails-userpassword-authentication-from-scratch-part-i/
+ * http://www.sitepoint.com/rails-userpassword-authentication-from-scratch-part-ii/
+ * http://stackoverflow.com/questions/17311940/rails-amazon-minitest-unit-loaderror
 
