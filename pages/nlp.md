@@ -36,3 +36,8 @@ Language Identification <http://www.faganfinder.com/translate/>
 Unknown Language Identification <http://complingone.georgetown.edu/~langid/>
 
 <http://www.translation-guide.com/language_identification.htm>
+
+## Courses
+
+[NLP Class](http://dhgarrette.github.io/nlpclass/)
+
