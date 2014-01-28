@@ -82,7 +82,7 @@ Items are generally grouped together using a mean or centroid of the measures ( 
 
        * `S = set of all points`
 
-       * `T1, T1 = distance thresholds such that T1 > T2`
+       * `T1, T2 = distance thresholds such that T1 > T2`
 
      * (2) Pick a point at random from S i.e. `A = S.random()`
 
