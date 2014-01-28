@@ -128,3 +128,8 @@ You can also fetch a string of jar files that can be used to execute a class dir
 	$ CLASSPATH=$(mvn dependency:build-classpath | grep -A1 'Dependencies classpath:' | tail -1)
     $ java -cp $CLASSPATH com.package.SomeMainClass arg1 arg2 ...
 	
+
+## Disable dependency genration in maven reports
+
+[Speeding up maven dependency report](http://tnfstacc.blogspot.in/2010/08/speeding-up-maven-dependency-report.html)
+
