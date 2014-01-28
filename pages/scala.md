@@ -364,6 +364,13 @@ Execution:
 
  [Setup SBT](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html)
 
+## Tips n Tricks
+
+Convert Java collections to Scala collections automatically
+
+    import scala.collection.JavaConversions._
+
+
 ## Where to learn more Scala
 
 ### Books
