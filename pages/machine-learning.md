@@ -272,7 +272,7 @@ There is also a weighted pearson correlation metric, which moves correlation tow
 
 #### Euclidean distance
 
-Euclidean distance is geometric distance between two n-dimensional points. This is a distance metric, so to convert it into a similarity metric, it is difined as
+Euclidean distance is geometric distance between two n-dimensional points. This is a distance metric, so to convert it into a similarity metric, it is defined as
 
     s = 1 / (1 + d )
 	where s = similarity
@@ -284,7 +284,7 @@ Cosine measure is the `cos(theta)` of angle `theta` between two points with resp
 
 #### Spearman correlation
 
-Spearman correlation - difining similarity by relative rank
+Spearman correlation - defining similarity by relative rank
 
 #### Tanimoto coefficient
 

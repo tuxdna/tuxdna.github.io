@@ -238,3 +238,10 @@ Using the matricies U, S and V, we can obtain the original matrix MS. Note that 
 
 
 
+
+## LSI - Latent Semantic Indexing
+
+[SVD and LSI Tutorial 1: Understanding SVD and LSI ](http://blog.csdn.net/pi9nc/article/details/8100410) and its [PDF](http://manuel.midoriparadise.com/public_html/svd-lsi-tutorial.pdf)
+
+
+
