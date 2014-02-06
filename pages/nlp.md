@@ -37,7 +37,30 @@ Unknown Language Identification <http://complingone.georgetown.edu/~langid/>
 
 <http://www.translation-guide.com/language_identification.htm>
 
-## Courses
+
+## Techniques
+
+**LDA**
+
+ * [Introduction to Latent Dirichlet Allocation](http://blog.echen.me/2011/08/22/introduction-to-latent-dirichlet-allocation/)
+
+ * [Latent Drichlet Allocation](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation)
+
+
+LDA in Spark:
+
+ * [SPARK-953](https://spark-project.atlassian.net/browse/SPARK-953)
+ * [SPARK-957](https://spark-project.atlassian.net/browse/SPARK-957)
+ * [LDA with Gibbs Sampling](https://gist.github.com/waleking/5477002)
+ * [LDA on local](https://gist.github.com/mijia/4224451)
+
+## Resources
 
 [NLP Class](http://dhgarrette.github.io/nlpclass/)
+
+[Which is most mature NLP tool](http://www.quora.com/Natural-Language-Processing/Which-NLP-engine-among-the-ones-below-is-most-mature-and-should-be-used-by-a-startup-for-its-NLP-needs)
+
+[Text Blob](https://textblob.readthedocs.org/en/latest/)
+
+[MLBase](http://mlbase.org/)
 
