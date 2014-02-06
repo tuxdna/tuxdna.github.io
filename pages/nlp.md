@@ -54,6 +54,10 @@ LDA in Spark:
  * [LDA with Gibbs Sampling](https://gist.github.com/waleking/5477002)
  * [LDA on local](https://gist.github.com/mijia/4224451)
 
+Topic Modeling in Python
+
+ * [gensim - topic modeling for humans](http://radimrehurek.com/gensim/index.html)
+
 ## Resources
 
 [NLP Class](http://dhgarrette.github.io/nlpclass/)
