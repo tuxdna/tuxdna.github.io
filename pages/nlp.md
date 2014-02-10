@@ -38,6 +38,42 @@ Unknown Language Identification <http://complingone.georgetown.edu/~langid/>
 <http://www.translation-guide.com/language_identification.htm>
 
 
+Some concepts:
+
+
+ * Normalization
+   * Assymetric
+   * Symmetric
+ * Case folding
+ * Lemmatization
+ * Morphology
+ * Stemming
+   - Porter's Algorithm ( chop / replace suffixes )
+
+ * Edit Distance
+   - Levenstein ( substitution costs 2, insert/delete 1 )
+ * Sequence Alignments
+   - Backtrace for optimal alignment paths
+ * Weighted Min-Edit distance
+
+
+Lucene Matrix
+
+NLP Techniques
+
+ * Viterbi
+ * Naive Bayes, Maxent Classifiers
+ * N-gram language modeling
+ * Statistical Parsing
+ * Inverted Index, TF-IDF, Vector Models of meaning
+
+Practical applications
+
+ * Information Extraction
+ * Spelling correction
+ * Information Retrieval
+ * Sentiment Analysis
+
 ## Techniques
 
 **LDA**
