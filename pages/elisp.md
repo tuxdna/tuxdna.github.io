@@ -220,3 +220,5 @@ description: "Learning Emacs Lisp"
     
 
 
+[Common Lisp - Beginner Tutorial](https://en.wikibooks.org/wiki/Common_Lisp/First_steps/Beginner_tutorial)
+

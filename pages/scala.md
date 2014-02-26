@@ -19,7 +19,7 @@ The name Scala stands for *"scalable language"*. The language is so named becaus
 
 Statically typed language with OOP + FP both.
 
- * Fast, expressive, and peasant to use.
+ * Fast, expressive, and pleasant to use.
  * Excellent type inference.
  * Runs on JVM.
 
@@ -62,6 +62,25 @@ Scala compiler is
  * `fsc` ( fast scala compiler )
 
 ## Scala REPL
+
+
+Function
+
+    scala> def fact(n: Int) = (1 to n).foldLeft(0)( (a,b) => a * b)
+    fact: (n: Int)Int
+    
+    scala> val factorial = fact(_)
+    factorial: Int => Int = <function1>
+    
+    scala> val f1 = (n: Int) =>  (1 to n).foldLeft(0)( (a,b) => a * b) 
+    f1: Int => Int = <function1>
+    
+    scala> factorial
+    res2: Int => Int = <function1>
+    
+    scala> val f2 = (n: Int, m: Int) =>  (m to n).foldLeft(0)( (a,b) => a * b) 
+    f2: (Int, Int) => Int = <function2>
+
 
 Map
 

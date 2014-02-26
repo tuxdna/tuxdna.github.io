@@ -77,3 +77,7 @@ KMeans clustering on Text corpus:
     $ mahout kmeans -ow -i /out-seqdir-sparse/tfidf-vectors/ -c /out-kmeans-clusters  -o /out-kmeans -dm org.apache.mahout.common.distance.CosineDistanceMeasure -x 10 -k 20 -ow --clustering -cl
     $ mahout clusterdump -i /out-kmeans/clusters-*-final -d /out-seqdir-sparse/dictionary.file-0 -dt sequencefile -b 100 -n 20 --evaluate -dm org.apache.mahout.common.distance.CosineDistanceMeasure --pointsDir /out-kmeans/clusteredPoints -o /out-output.txt
 
+
+
+[Word Space Model](http://su.diva-portal.org/smash/get/diva2:189276/FULLTEXT01) by Magnus Sahlgren
+
