@@ -225,6 +225,7 @@ Create item similarity table:
 
 Basic algorithm:
 
+
     for every item i that u has no preference for yet
       for every other user v that has a preference for i
         compute a similarity s between u and v
@@ -235,10 +236,10 @@ Basic algorithm with a user neighbourhood:
 
     for every other user w
       compute a similarity s between u and w
-      retain the top users, ranked by similarity, as a neighborhood n
-
-    for every item i that some user n has a perference for, but tha u has no preference for yet
-      for every other user v in n that has a preference for i
+      retain the top users, ranked by similarity, as a neighbourhood n
+    
+    for item i in neighbourhood except the ones rated by u
+      for user v in neighbourhood who has a preference for i
         compute a similarity s between u and v
         incorporate v's preference for i, weighted by s, into a running average
     
@@ -294,7 +295,10 @@ Also know as Jackard coefficent is:
 
 #### Log likelihood test
 
-Log Likelihood test: an expression of how unlikely it is for two users to have so much overlap, given the total number of items out there and the number of items each user has a preference for.
+
+It is quite similar to Tanimoto Coefficient, which measures an overlap. However, Log Likelihood test, is an expression of how unlikely are will users have so much overlap, given the total number of items and the number of items each user has a preference for.
+
+Two similar users are likely to rate a movie common to them. However two dissimilar users are unlikely to rate a common movie. Therefore the more unilkely, the more similar two users shoud be. The resulting value can be interpreted as a probability that an overlap isn't just due to chance.
 
 
 ### Components and their compatibility
