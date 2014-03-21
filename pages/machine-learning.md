@@ -221,38 +221,6 @@ Create item similarity table:
 	  
 
 
-### Basic Algorithm
-
-Basic algorithm:
-
-
-    for every item i that u has no preference for yet
-      for every other user v that has a preference for i
-        compute a similarity s between u and v
-        incorporate v's preference for i, weighted by s, into a running average
-    return the top items, ranked by weighted average
-	
-Basic algorithm with a user neighbourhood:
-
-    for every other user w
-      compute a similarity s between u and w
-      retain the top users, ranked by similarity, as a neighbourhood n
-    
-    for item i in neighbourhood except the ones rated by u
-      for user v in neighbourhood who has a preference for i
-        compute a similarity s between u and v
-        incorporate v's preference for i, weighted by s, into a running average
-    
-    return the top items, ranked by weighted average
-
-Kind of neighbourhood metrics:
-
- * fixed size
-
- * threshold based
-
-It is also possible to infer values for missing preferences in Mahout. This is achieveable using `PreferenceInferer` implementation such as `AveragePreferenceInferer`.
-
 ### Similarity metrics
 
 #### Pearson correlation
@@ -316,20 +284,50 @@ In case of zero difference in estimate and actual preference, by the evauluator,
 
 *User based* recommenders first finds similar users and then sees what they like.
 
-### Item based recommender
-
-
-*Item based* recommenders first sees what the user likes and then finds similar items.
-
-Algorithm
+**Algorithm**: User-Based Recommender
 
 
     for every item i that u has no preference for yet
-        for every item j that u has a preference for
-            compute a similarity s between i and j
-            add u's preference for j, weighted by s, to a running average
-	    
+      for every other user v that has a preference for i
+        compute a similarity s between u and v
+        incorporate v's preference for i, weighted by s, into a running average
     return the top items, ranked by weighted average
+	
+Basic algorithm with a user neighbourhood:
+
+    for every other user w
+      compute a similarity s between u and w
+      retain the top users, ranked by similarity, as a neighbourhood n
+    
+    for item i in neighbourhood except the ones rated by u
+      for user v in neighbourhood who has a preference for i
+        compute a similarity s between u and v
+        incorporate v's preference for i, weighted by s, into a running average
+    
+    return the top items, ranked by weighted average
+
+Kind of neighbourhood metrics:
+
+ * fixed size
+
+ * threshold based
+
+It is also possible to infer values for missing preferences in Mahout. This is achieveable using `PreferenceInferer` implementation such as `AveragePreferenceInferer`.
+
+### Item based recommender
+
+*Item based* recommenders first sees what the user likes and then finds similar items.
+
+**Algorithm**: Item-Based Recommender
+
+    for every item i that u has no preference for yet
+      for every item j that u has a preference for
+        compute a similarity s between i and j
+        add u's preference for j, weighted by s, to a running average
+		
+    return the top items, ranked by weighted average
+
+Note: the running time of an item-based recommender scales up as the number of items increases, whereas a user-based recommender's running time goes up as the number of users increases.
 
 
 #### Slope One recommender
@@ -354,11 +352,8 @@ Algorithm
        return the top items, raned by these averages
 
 
-    How to implement?
+Implementation in a pseudo-code (Following Code is Scala like)
     
-    Following Code is Scala'ish
-    
-
     I = { set of all items }
     U = { set of all users }
     M = { (i,u,p): i in I, u in U, p is a preference value }
@@ -397,7 +392,7 @@ Algorithm
     }
     
 
-SlopeOne Gotchas
+**SlopeOne Gotchas**
 
 The difference does not take into account the number of users who provided the ratings. Even if the rating is given for two items only by one user, its weightage will be same as rating given by many more users. This can be mitigated by using weigthing schemes:
 
