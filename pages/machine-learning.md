@@ -342,11 +342,11 @@ Algorithm
           for every user u expressing preference for both i and j
             add the difference in u's preference for i and j to an average
 
-    SlopeOne Algorithm(u)
+    SlopeOne Algorithm(u: User)
     
-      for every item i the user u expresses no preference for
-        for every item j that user u expresses a preference for
-          find the average preference between j and i
+      for every item i for which u expresses no preference
+        for every item j for which u expresses a preference
+          find the average preference difference between j and i
           add this diff to u's preference value for j
           add this to a running average
        return the top items, raned by these averages
@@ -430,9 +430,107 @@ The process of grouping a set of physical or abstract objects into classes of si
 
 A *cluster* is a collection of data objects that are similar to one another within the same cluster and are dissimilar to the objects in other clusters.
 
-Process of clustering involves an *algorithm*, a *simimarity/dissimarity metric*, and a *stop condition*.
+Process of clustering involves
+ * an *algorithm*
+ * a *simimarity/dissimarity metric*
+ * and a *stop condition*
+ 
+
+Distance measures
+
+ * **Euclidean Distance**: Defined above.
+
+ * **Squared Euclidean Distance**: `d = (a1 - b1)^2 + (a2 - b2)^2 + ... + (an - bn) ^ 2`
+
+ * **Manhattan Distance**: `d = (a1 - b1) + (a2 - b2) + ... + (an - bn)`
+
+ * **Cosine Distance**: Defined above
+
+ * **Tanimoto Distance**: Defined above
+ 
+ * **Weighted Distance Measure**: Assigns weights for different features in Euclidean or Manhattan Distances. Define a weight Vector, which has weight factor values.
+
+TF-IDF measure
+
+	N = Number of Documents
+    TFi = Term Frequency of term i
+	DFi = Document Frequency of term i ( number of documents in which i occurs )
+    IDFi = Inverted Document Frequency of term i = 1 / DFi
+	
+Therefore:
+
+	Wi = Weight of term i
+	Wi = TF * N / IDF
+
+In the above equation IDF can diminish the effect of TF to a large degree. Therefore, we can use `log` of IDF
+
+	Wi = TF * log(N / IDF)
+
+Finally a good TF-IDF measure is given by the above equation.
+
+**Collocation**: A sequence of related words occuring together, such as **New York City**. Although these are three words `New`, `York` and `City`, when combined they have a different meaning. Therefore they can be, together considered as a single term. This is also known as **Word N-Grams**.
 
 
+Creating Vectors from Text documents
+
+Create sequence files
+
+    $ mahout seqdirectory -i /data/lda/text-files/ -o /data/lda/output-seqdir -c UTF-8
+    Running on hadoop, using ....hadoop-1.1.1/bin/hadoop and HADOOP_CONF_DIR=
+    MAHOUT-JOB: ....mahout-distribution-0.7/mahout-examples-0.7-job.jar
+    14/03/24 20:47:25 INFO common.AbstractJob: Command line arguments: {--charset=[UTF-8], --chunkSize=[64], --endPhase=[2147483647], --fileFilterClass=[org.apache.mahout.text.PrefixAdditionFilter], --input=[/data/lda/ohsumed_full_txt/ohsumed_full_txt/], --keyPrefix=[], --output=[/data/lda/output], --startPhase=[0], --tempDir=[temp]}
+    14/03/24 20:57:20 INFO driver.MahoutDriver: Program took 594764 ms (Minutes: 9.912733333333334)
+
+Convert sequence files to sparse vectors. Use TFIDF by default.
+
+    $ mahout seq2sparse -i /data/lda/output-seqdir -o /data/lda/output-seq2sparse/ -ow
+    Running on hadoop, using ....hadoop-1.1.1/bin/hadoop and HADOOP_CONF_DIR=
+    MAHOUT-JOB: ....mahout-distribution-0.7/mahout-examples-0.7-job.jar
+    14/03/24 21:00:08 INFO vectorizer.SparseVectorsFromSequenceFiles: Maximum n-gram size is: 1
+    14/03/24 21:00:09 INFO vectorizer.SparseVectorsFromSequenceFiles: Minimum LLR value: 1.0
+    14/03/24 21:00:09 INFO vectorizer.SparseVectorsFromSequenceFiles: Number of reduce tasks: 1
+    14/03/24 21:00:10 INFO input.FileInputFormat: Total input paths to process : 1
+    14/03/24 21:00:11 INFO mapred.JobClient: Running job: job_201403241418_0001
+    .....
+    14/03/24 21:02:51 INFO driver.MahoutDriver: Program took 162906 ms (Minutes: 2.7151)
+
+This step creates:
+ 
+  * TF vectors in `/data/lda/output-seq2sparse/tf-vectors`
+  * DF count in `/data/lda/output-seq2sparse/df-count`
+  * TF-IDF vectors in `/data/lda/output-seq2sparse/tfidf-vectors`
+ 
+Normalization:
+
+ * **p-norm**: Read on [Wikipedia](http://en.wikipedia.org/wiki/Norm_%28mathematics%29#p-norm)
+ * **Manhattan norm**: When `p = 1`
+ * **Euclidean norm**: When `p = 2`
+ * **Infinite norm**: Simply divide by weight of **largest magnitude dimension**.
+
+Following command fails ( using `/data/lda/output-seq2sparse` as input )
+
+    $ mahout seq2sparse -i /data/lda/output-seq2sparse -o /data/lda/output-seq2sparse-normalized -ow -a org.apache.lucene.analysis.WhitespaceAnalyzer -chunk 200 -wt tfidf -s 5 -md 3 -x 90 -ng 2  -ml 50 -seq -n 2 -nr 5
+    Exception in thread "main" java.io.FileNotFoundException: File does not exist: hdfs://localhost:54310/data/lda/output-seq2sparse/df-count/data
+    	at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:528)
+    	at org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat.listStatus(SequenceFileInputFormat.java:63)
+    	at org.apache.hadoop.mapreduce.lib.input.FileInputFormat.getSplits(FileInputFormat.java:252)
+		....SKIPPED....
+    	at org.apache.hadoop.util.RunJar.main(RunJar.java:156)
+
+
+However this works just fine ( using `/data/lda/output-seqdir` as input )
+
+    $ mahout seq2sparse -i /data/lda/output-seqdir -o /data/lda/output-seq2sparse-normalized -ow -a org.apache.lucene.analysis.WhitespaceAnalyzer -chunk 200 -wt tfidf -s 5 -md 3 -x 90 -ng 2  -ml 50 -seq -n 2 -nr 5
+    Running on hadoop, using .../hadoop-1.1.1/bin/hadoop and HADOOP_CONF_DIR=
+    MAHOUT-JOB: ..../mahout-distribution-0.7/mahout-examples-0.7-job.jar
+    14/03/24 21:35:55 INFO vectorizer.SparseVectorsFromSequenceFiles: Maximum n-gram size is: 2
+    14/03/24 21:35:56 INFO vectorizer.SparseVectorsFromSequenceFiles: Minimum LLR value: 50.0
+    14/03/24 21:35:56 INFO vectorizer.SparseVectorsFromSequenceFiles: Number of reduce tasks: 5
+    14/03/24 21:35:57 INFO input.FileInputFormat: Total input paths to process : 1
+    ...SKIPPED...
+    14/03/24 21:45:11 INFO common.HadoopUtil: Deleting /data/lda/output-seq2sparse-normalized/partial-vectors-0
+    14/03/24 21:45:11 INFO driver.MahoutDriver: Program took 556420 ms (Minutes: 9.273666666666667)
+    
 
 ## References:
 
