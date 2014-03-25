@@ -84,7 +84,7 @@ Items are generally grouped together using a mean or centroid of the measures ( 
 
        * `T1, T2 = distance thresholds such that T1 > T2`
 
-     * (2) Pick a point at random from S i.e. `A = S.random()`
+     * (2) Pick a point `A` at random from S i.e. `A = S.pickRandom()`, this becomes a new canopy cluster center
 
      * (3) For each of the points P in S:
 
@@ -93,6 +93,25 @@ Items are generally grouped together using a mean or centroid of the measures ( 
        * `if ( distance(A,P) < T2) then S.remove(P)`
 
      * (4) Repeat 2-3 steps until S is empty
+	 
+
+Pseudocode
+
+    S = set of all points
+    T1, T2 = distance thresholds such that T1 > T2
+	canopies = Set of canopies, initially empty
+	do {
+      C = S.pickRandom() // new canopy
+	  canopies.add(C)
+      for( P <- S ) {
+        if ( distance(C,P) <= T1 ) { select for C }
+        if ( distance(C,P) < T2) { S.remove(P) }
+      }
+    } while( S.notEmpty() )
+
+
+Scala implementation: https://gist.github.com/tuxdna/9764091
+
 
    * [K-Means Clustering](http://en.wikipedia.org/wiki/K-means_clustering)
 
@@ -530,7 +549,65 @@ However this works just fine ( using `/data/lda/output-seqdir` as input )
     ...SKIPPED...
     14/03/24 21:45:11 INFO common.HadoopUtil: Deleting /data/lda/output-seq2sparse-normalized/partial-vectors-0
     14/03/24 21:45:11 INFO driver.MahoutDriver: Program took 556420 ms (Minutes: 9.273666666666667)
+
+Running K-Means algorithm on the vectors we generated:
+
+    $ mahout kmeans -i /data/lda/output-seq2sparse-normalized/tfidf-vectors -c /data/lda/output-kmeans-initialclusters -o /data/lda/output-kmeans-clusters -dm org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure -cd 1.0 -k 20 -x 20
+    14/03/25 15:05:46 INFO common.AbstractJob: Command line arguments: {--clusters=[/data/lda/output-kmeans-initialclusters], --convergenceDelta=[1.0], --distanceMeasure=[org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure], --endPhase=[2147483647], --input=[/data/lda/output-seq2sparse-normalized/tfidf-vectors], --maxIter=[20], --method=[mapreduce], --numClusters=[20], --output=[/data/lda/output-kmeans-clusters], --startPhase=[0], --tempDir=[temp]}
+    14/03/25 15:05:46 INFO common.HadoopUtil: Deleting /data/lda/output-kmeans-initialclusters
+    14/03/25 15:05:46 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+    14/03/25 15:05:46 INFO zlib.ZlibFactory: Successfully loaded & initialized native-zlib library
+    14/03/25 15:05:46 INFO compress.CodecPool: Got brand-new compressor
+    14/03/25 15:05:49 INFO kmeans.RandomSeedGenerator: Wrote 20 Klusters to /data/lda/output-kmeans-initialclusters/part-randomSeed
+    14/03/25 15:05:49 INFO kmeans.KMeansDriver: Input: /data/lda/output-seq2sparse-normalized/tfidf-vectors Clusters In: /data/lda/output-kmeans-initialclusters/part-randomSeed Out: /data/lda/output-kmeans-clusters Distance: org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure
+    14/03/25 15:05:49 INFO kmeans.KMeansDriver: convergence: 1.0 max Iterations: 20 num Reduce Tasks: org.apache.mahout.math.VectorWritable Input Vectors: {}
+    14/03/25 15:05:49 INFO compress.CodecPool: Got brand-new decompressor
+    Cluster Iterator running iteration 1 over priorPath: /data/lda/output-kmeans-clusters/clusters-0
+    14/03/25 15:05:50 INFO input.FileInputFormat: Total input paths to process : 5
+    14/03/25 15:05:50 INFO mapred.JobClient: Running job: job_201403241418_0020
+    14/03/25 15:05:51 INFO mapred.JobClient:  map 0% reduce 0%
+	...
+    14/03/25 15:06:31 INFO mapred.JobClient:  map 100% reduce 100%
+	...
+    14/03/25 15:06:31 INFO driver.MahoutDriver: Program took 45301 ms (Minutes: 0.7550166666666667)
     
+
+Dump cluster points:
+
+    $ mahout clusterdump  -b 10 -n 10  -dt sequencefile -d /data/lda/output-seq2sparse-normalized/dictionary.file-* -i /data/lda/output-kmeans-clusters/clusters-1-final -o ./kmeans-dump
+    14/03/25 18:09:22 INFO common.AbstractJob: Command line arguments: {--dictionary=[/data/lda/output-seq2sparse-normalized/dictionary.file-*], --dictionaryType=[sequencefile], --distanceMeasure=[org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure], --endPhase=[2147483647], --input=[/data/lda/output-kmeans-clusters/clusters-1-final], --numWords=[10], --output=[./kmeans-dump], --outputFormat=[TEXT], --startPhase=[0], --substring=[10], --tempDir=[temp]}
+    14/03/25 18:09:27 INFO clustering.ClusterDumper: Wrote 20 clusters
+    14/03/25 18:09:27 INFO driver.MahoutDriver: Program took 4704 ms (Minutes: 0.0784)
+
+
+KMeans using Cosine distance measure:
+
+    $ mahout kmeans -i /data/lda/output-seq2sparse-normalized/tfidf-vectors -c /data/lda/output-kmeans-initialclusters -o /data/lda/output-kmeans-cosine-clusters -dm org.apache.mahout.common.distance.CosineDistanceMeasure -cd 0.1 -k 20 -x 20
+    14/03/25 18:21:29 INFO common.AbstractJob: Command line arguments: {--clusters=[/data/lda/output-kmeans-initialclusters], --convergenceDelta=[0.1], --distanceMeasure=[org.apache.mahout.common.distance.CosineDistanceMeasure], --endPhase=[2147483647], --input=[/data/lda/output-seq2sparse-normalized/tfidf-vectors], --maxIter=[20], --method=[mapreduce], --numClusters=[20], --output=[/data/lda/output-kmeans-cosine-clusters], --startPhase=[0], --tempDir=[temp]}
+    14/03/25 18:21:29 INFO common.HadoopUtil: Deleting /data/lda/output-kmeans-initialclusters
+    14/03/25 18:21:29 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+    14/03/25 18:21:29 INFO zlib.ZlibFactory: Successfully loaded & initialized native-zlib library
+    14/03/25 18:21:29 INFO compress.CodecPool: Got brand-new compressor
+    14/03/25 18:21:33 INFO kmeans.RandomSeedGenerator: Wrote 20 Klusters to /data/lda/output-kmeans-initialclusters/part-randomSeed
+    14/03/25 18:21:33 INFO kmeans.KMeansDriver: Input: /data/lda/output-seq2sparse-normalized/tfidf-vectors Clusters In: /data/lda/output-kmeans-initialclusters/part-randomSeed Out: /data/lda/output-kmeans-cosine-clusters Distance: org.apache.mahout.common.distance.CosineDistanceMeasure
+    14/03/25 18:21:33 INFO kmeans.KMeansDriver: convergence: 0.1 max Iterations: 20 num Reduce Tasks: org.apache.mahout.math.VectorWritable Input Vectors: {}
+    14/03/25 18:21:33 INFO compress.CodecPool: Got brand-new decompressor
+    Cluster Iterator running iteration 1 over priorPath: /data/lda/output-kmeans-cosine-clusters/clusters-0
+    14/03/25 18:21:33 INFO input.FileInputFormat: Total input paths to process : 5
+    14/03/25 18:21:34 INFO mapred.JobClient: Running job: job_201403241418_0022
+    14/03/25 18:21:35 INFO mapred.JobClient:  map 0% reduce 0%
+    ....SKIPPED....
+    14/03/25 18:24:28 INFO driver.MahoutDriver: Program took 178941 ms (Minutes: 2.98235)
+    
+
+Dump cluster points:
+
+    $ mahout clusterdump  -b 10 -n 10  -dt sequencefile -d /data/lda/output-seq2sparse-normalized/dictionary.file-* -i /data/lda/output-kmeans-cosine-clusters/clusters-4-final -o ./kmeans-cosine-dump
+    14/03/25 18:26:06 INFO common.AbstractJob: Command line arguments: {--dictionary=[/data/lda/output-seq2sparse-normalized/dictionary.file-*], --dictionaryType=[sequencefile], --distanceMeasure=[org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure], --endPhase=[2147483647], --input=[/data/lda/output-kmeans-cosine-clusters/clusters-4-final], --numWords=[10], --output=[./kmeans-cosine-dump], --outputFormat=[TEXT], --startPhase=[0], --substring=[10], --tempDir=[temp]}
+    14/03/25 18:26:10 INFO clustering.ClusterDumper: Wrote 20 clusters
+    14/03/25 18:26:10 INFO driver.MahoutDriver: Program took 3630 ms (Minutes: 0.0605)
+    
+
 
 ## References:
 
