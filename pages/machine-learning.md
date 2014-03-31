@@ -629,3 +629,5 @@ Dump cluster points:
 
  * [Third Generation Tools for Realizing Machine Learning Algorithms](http://strataconf.com/strata2013/public/schedule/detail/27390)
 
+ * [Selecting an appropriate similarity metric & assessing the validity of a k-means clustering model](https://stackoverflow.com/questions/8102515/selecting-an-appropriate-similarity-metric-assessing-the-validity-of-a-k-means)
+
