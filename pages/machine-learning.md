@@ -720,6 +720,58 @@ Kinds of Predictor Variables
  * Text-like
 
 
+Running and understanding SGD
+
+    $ mahout cat donut.csv
+    $ mahout trainlogistic --input donut.csv --output ./model --target color --categories 2 --predictors x y --types numeric --features 20 --passes 100 --rate 50
+    20
+    color ~ -0.149*Intercept Term + -0.701*x + -0.427*y
+          Intercept Term -0.14885
+                       x -0.70136
+                       y -0.42740
+    0 0 0 0 0 0 0 0 0 0 -0.701362221 0 0 -0.148846792 0 0 0 -0.427403872 0 0
+	$ mahout runlogistic --input donut.csv --model ./model --auc --confusion
+    AUC = 0.57
+    confusion: [  [ 27.0,  13.0],
+	              [  0.0,   0.0]  ]
+    entropy:   [  [ -0.4, -0.3 ],
+	              [ -1.2, -0.7 ]  ]
+
+AUC - [area under curve](http://www.mathwords.com/a/area_under_a_curve.htm)
+
+confusion - [confusion matrix](http://en.wikipedia.org/wiki/Confusion_matrix)
+
+entropy 
+
+Add more predictors and passes
+
+    $ mahout trainlogistic --input donut.csv --output model --target color --categories 2 --predictors x y a b c --types numeric --features 20 --passes 100 --rate 50
+    20
+    color ~ 7.068*Intercept Term + 0.581*a + -1.369*b + -25.059*c + 0.581*x + 2.319*y
+          Intercept Term 7.06759
+                       a 0.58123
+                       b -1.36893
+                       c -25.05945
+                       x 0.58123
+                       y 2.31879
+    0 0 0 0 0 -1.368933989 0 0 0 0 0.581234210 0 0 7.067587159 0 0 0 2.318786209 0 -25.059452292
+
+Results improve this time
+
+    $ mahout runlogistic --input donut.csv --model ./model --auc --confusion
+    AUC = 1.00
+    confusion: [[27.0, 1.0], [0.0, 12.0]]
+    entropy: [[-0.1, -1.5], [-4.0, -0.2]]
+
+Running on other data
+
+    $ mahout runlogistic --input donut-test.csv --model ./model --auc --confusion
+    AUC = 0.97
+    confusion: [[24.0, 2.0], [3.0, 11.0]]
+    entropy: [[-0.2, -2.8], [-4.1, -0.1]]
+
+
+
 ## References:
 
  * [Machine Learning and Data Mining in Ruby and R](http://www.williamhertling.com/2010/04/machine-learning-and-data-mining-in.html)
