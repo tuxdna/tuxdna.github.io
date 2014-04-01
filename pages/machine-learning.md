@@ -497,7 +497,6 @@ Create sequence files
     $ mahout seqdirectory -i /data/lda/text-files/ -o /data/lda/output-seqdir -c UTF-8
     Running on hadoop, using ....hadoop-1.1.1/bin/hadoop and HADOOP_CONF_DIR=
     MAHOUT-JOB: ....mahout-distribution-0.7/mahout-examples-0.7-job.jar
-    14/03/24 20:47:25 INFO common.AbstractJob: Command line arguments: {--charset=[UTF-8], --chunkSize=[64], --endPhase=[2147483647], --fileFilterClass=[org.apache.mahout.text.PrefixAdditionFilter], --input=[/data/lda/ohsumed_full_txt/ohsumed_full_txt/], --keyPrefix=[], --output=[/data/lda/output], --startPhase=[0], --tempDir=[temp]}
     14/03/24 20:57:20 INFO driver.MahoutDriver: Program took 594764 ms (Minutes: 9.912733333333334)
 
 Convert sequence files to sparse vectors. Use TFIDF by default.
@@ -607,6 +606,118 @@ Dump cluster points:
     14/03/25 18:26:10 INFO clustering.ClusterDumper: Wrote 20 clusters
     14/03/25 18:26:10 INFO driver.MahoutDriver: Program took 3630 ms (Minutes: 0.0605)
     
+
+Fuzzy KMeans
+
+    $ mahout fkmeans -i /data/lda/output-seq2sparse-normalized/tfidf-vectors -c /data/lda/output-fkmeans-squared-initialclusters -o /data/lda/output-fkmeans-squared-clusters -cd 1.0 -k 20 -m 2 -ow -x 20 -dm org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure
+
+
+Problems with KMeans
+
+ * overlapping ( can be handled with Fuzzy KMeans )
+ * non-circular distribution
+ * not hierarchical
+ 
+
+Dirichlet clustering
+
+DisplayDirichlet clustering
+
+    $ mahout org.apache.mahout.clustering.display.DisplayDirichlet
+    14/03/28 14:58:30 WARN driver.MahoutDriver: No org.apache.mahout.clustering.display.DisplayDirichlet.props found on classpath, will use command-line arguments only
+    14/03/28 14:58:36 INFO display.DisplayClustering: Generating 500 samples m=[1.0, 1.0] sd=3.0
+    14/03/28 14:58:36 INFO display.DisplayClustering: Generating 300 samples m=[1.0, 0.0] sd=0.5
+    14/03/28 14:58:36 INFO display.DisplayClustering: Generating 300 samples m=[0.0, 2.0] sd=0.1
+    14/03/28 14:58:53 INFO driver.MahoutDriver: Program took 23027 ms (Minutes: 0.3837833333333333)
+    
+
+*generative algorithm*: fit the mode to the data. using the model, that data can be generated which fits the model. example: LDA
+
+*discriminative algorithm*: fit the data to the model viz. split the data into k sets based on some distance metric. example: hierarchical, k-means, SVM etc.
+
+
+
+Generate matrix:
+
+    mahout-distribution-0.9$ bin/mahout rowid -i /data/clustering/reuters-out-sparse/tf-vectors -o /data/clustering/reuters-out-rowid/
+    Running on hadoop, using ...hadoop-1.1.1/bin/hadoop and HADOOP_CONF_DIR=
+    MAHOUT-JOB: ...mahout-distribution-0.9/mahout-examples-0.9-job.jar
+    14/03/31 12:49:36 INFO common.AbstractJob: Command line arguments: {--endPhase=[2147483647], --input=[/data/clustering/reuters-out-sparse/tf-vectors], --output=[/data/clustering/reuters-out-rowid/], --startPhase=[0], --tempDir=[temp]}
+    14/03/31 12:49:37 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+    14/03/31 12:49:37 INFO zlib.ZlibFactory: Successfully loaded & initialized native-zlib library
+    14/03/31 12:49:37 INFO compress.CodecPool: Got brand-new compressor
+    14/03/31 12:49:37 INFO compress.CodecPool: Got brand-new compressor
+    14/03/31 12:49:39 INFO vectors.RowIdJob: Wrote out matrix with 21578 rows and 57545 columns to /data/clustering/reuters-out-rowid/matrix
+    14/03/31 12:49:39 INFO driver.MahoutDriver: Program took 3257 ms (Minutes: 0.054283333333333336)
+    
+
+Mahout 0.7
+
+ * dirichlet
+ 
+ * kmeans / fkmeans:  throwing errors with heap space
+
+Mahout 0.9
+
+ * dirichlet doesn't exist
+
+ * kmeans / fkmeans work better without throwing any errors
+
+
+
+## clusterpp
+
+Set env variables
+
+    DISTMETRIC=org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure
+    TFIDF_VEC=/data/clustering/reuters-out-sparse/tfidf-vectors
+    INITCLUSTERS=/data/clustering/reuters-out-kmeans-initialclusters
+    CLUSTERS=/data/clustering/reuters-out-kmeans-clusters
+
+Run kmeans
+
+    $ hadoop fs -rmr /data/clustering/reuters-out-kmeans-clusters
+    $ mahout kmeans -cl -cd 1.0 -k 20 -x 20 -dm $DISTMETRIC -i $TFIDF_VEC -c $INITCLUSTERS -o $CLUSTERS
+    Running on hadoop, using ...hadoop-1.1.1/bin/hadoop and HADOOP_CONF_DIR=
+    MAHOUT-JOB: ...mahout-distribution-0.9/mahout-examples-0.9-job.jar
+    14/03/31 15:08:33 INFO common.AbstractJob: Command line arguments: {--clusters=[/data/clustering/reuters-out-kmeans-initialclusters], --convergenceDelta=[1.0], --distanceMeasure=[org.apache.mahout.common.distance.SquaredEuclideanDistanceMeasure], --endPhase=[2147483647], --input=[/data/clustering/reuters-out-sparse/tfidf-vectors], --maxIter=[20], --method=[mapreduce], --numClusters=[20], --output=[/data/clustering/reuters-out-kmeans-clusters], --startPhase=[0], --tempDir=[temp]}
+    14/03/31 15:08:33 INFO common.HadoopUtil: Deleting /data/clustering/reuters-out-kmeans-initialclusters
+    14/03/31 15:08:33 INFO util.NativeCodeLoader: Loaded the native-hadoop library
+    .... OUTPUT SKIPPED ...
+    14/03/31 15:10:04 INFO driver.MahoutDriver: Program took 91562 ms (Minutes: 1.5260333333333334)
+    
+    
+Run clusterpp
+
+    $ mahout clusterpp -i /data/clustering/reuters-out-kmeans-clusters -o /data/clustering/reuters-out-clusterpp -xm mapreduce -ow
+
+
+## Classification
+
+The data available can be modeled in terms of records, fields and target variables:
+
+    Record(field1, field2, ... fieldN) -> targetVariable
+	
+	OR
+	
+	(features or predictor variables) -> targetVariable
+
+
+Learning process
+
+    List(features, target) ==> learning algorithm ==> model
+	
+Classification process
+
+	List(features) --> model ==> target
+	
+
+Kinds of Predictor Variables
+
+ * Continuous ( infinite )
+ * Categorical ( finite discreet )
+ * Word-like ( discreet infinite single words)
+ * Text-like
 
 
 ## References:
