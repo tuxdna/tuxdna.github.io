@@ -794,3 +794,5 @@ Running on other data
 
  * [Selecting an appropriate similarity metric & assessing the validity of a k-means clustering model](https://stackoverflow.com/questions/8102515/selecting-an-appropriate-similarity-metric-assessing-the-validity-of-a-k-means)
 
+ * [An Introduction To Mahout's Logistic Regression SGD Classifier](https://blog.trifork.com/2014/02/04/an-introduction-to-mahouts-logistic-regression-sgd-classifier/)
+
