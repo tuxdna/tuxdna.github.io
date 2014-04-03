@@ -609,11 +609,7 @@ Some pointers to interesting Scala questions:
 
  * Given you have a class C. What is `x == y` after `val x,y = new C` ?  What is `j == k` after `val j@k = new C` ?
 
- * What are the results of the following? 
- 
-    val IJ = (3, 4)
-    val (i,j) = IJ
-    val (I,J): IJ.type = IJ
+ * What are the results of the following? `val IJ = (3, 4)`; `val (i,j) = IJ`; `val (I,J): IJ.type = IJ`
 
  * What is a closure?
 
