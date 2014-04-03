@@ -580,7 +580,7 @@ Convert Java collections to Scala collections automatically
  * [*Scala for the Impatient*](http://blog.typesafe.com/free-pdf-from-typesafe-scala-for-the-impatien-64715) (free) 
  * [*Programming Scala*](http://ofps.oreilly.com/titles/9780596155957) (free) 
  * [*Programming in Scala 2nd Ed.*](http://www.amazon.com/Programming-Scala-Comprehensive-Step-Step/dp/0981531644)
- * [*Functional Programming Principles in Scala*](https://www.coursera.org/course/progfun) ( free online course ) 
+ * [*Functional Programming Principles in Scala*](https://www.coursera.org/course/progfun) ( free online course )
  * [Getting Started with Scala](http://www.scala-lang.org/node/198)
 
 ### Blogs
@@ -607,9 +607,47 @@ Some pointers to interesting Scala questions:
 
  * Name the default subclass in the Scala type hierarchy?
 
- * Given you have a class C. What is `x == y` after `val x,y = new C` ?  What is `j == k` after `val j@k = new C` ?
+Given you have a class C. What is `x == y` after `val x,y = new C` ?  What is `j == k` after `val j@k = new C` ?
 
- * What are the results of the following? `val IJ = (3, 4)`; `val (i,j) = IJ`; `val (I,J): IJ.type = IJ`
+    scala> class C
+    defined class C
+    
+    scala> val x,y = new C
+    x: C = C@3e0f950
+    y: C = C@270ff52d
+    
+    scala> val j@k = new C
+    j: C = C@57797bd3
+    k: C = C@57797bd3
+    
+    scala> x == y
+    res0: Boolean = false
+    
+    scala> j == k
+    res1: Boolean = true
+    
+
+What are the results of the following?
+
+    val IJ = (3, 4)
+    val (i,j) = IJ
+    val (I,J): IJ.type = IJ
+
+
+    scala> val IJ = (3, 4)
+    IJ: (Int, Int) = (3,4)
+    
+    scala> val (i,j) = IJ
+    i: Int = 3
+    j: Int = 4
+    
+    scala> val (I,J): IJ.type = IJ
+    <console>:8: error: not found: value I
+           val (I,J): IJ.type = IJ
+                ^
+    <console>:8: error: not found: value J
+           val (I,J): IJ.type = IJ
+    
 
  * What is a closure?
 
