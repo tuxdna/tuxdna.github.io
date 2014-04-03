@@ -577,9 +577,9 @@ Convert Java collections to Scala collections automatically
 
 ### Books
 
- * [*Scala for the Impatient*](http://blog.typesafe.com/free-pdf-from-typesafe-scala-for-the-impatien-64715) (free) 
- * [*Programming Scala*](http://ofps.oreilly.com/titles/9780596155957) (free) 
- * [*Programming in Scala 2nd Ed.*](http://www.amazon.com/Programming-Scala-Comprehensive-Step-Step/dp/0981531644)
+ * [Scala for the Impatient](http://blog.typesafe.com/free-pdf-from-typesafe-scala-for-the-impatien-64715) (free) 
+ * [Programming Scala](http://ofps.oreilly.com/titles/9780596155957) (free) 
+ * [Programming in Scala 2nd Ed.](http://www.amazon.com/Programming-Scala-Comprehensive-Step-Step/dp/0981531644)
  * [*Functional Programming Principles in Scala*](https://www.coursera.org/course/progfun) ( free online course )
  * [Getting Started with Scala](http://www.scala-lang.org/node/198)
 
