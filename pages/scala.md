@@ -562,6 +562,9 @@ Partial examples of: `Future { block }`, `onComplete`, `recover`, `recoverWith`,
 ## sbt: Simple Build Tool
 
  [Setup SBT](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html)
+  
+    sbt "show compile:dependency-classpath"
+    sbt "show compile:dependency-classpath" | grep -B1 'success' | head -1 > output.txt
 
 ## Tips n Tricks
 
@@ -606,7 +609,11 @@ Some pointers to interesting Scala questions:
 
  * Given you have a class C. What is `x == y` after `val x,y = new C` ?  What is `j == k` after `val j@k = new C` ?
 
- * What are the results of the following? `val IJ = (3, 4)`; `val (i,j) = IJ`; `val (I,J): IJ.type = IJ`
+ * What are the results of the following? 
+ 
+    val IJ = (3, 4)
+    val (i,j) = IJ
+    val (I,J): IJ.type = IJ
 
  * What is a closure?
 
@@ -689,3 +696,4 @@ Some pointers to interesting Scala questions:
  * [Scala & Data Science](https://thenewcircle.com/s/post/1529/scala_and_data_science_fun_with_folks_from_linkedin_ebay_vitaly_gordon_chris_severs_video)
  * [Scala Rx talk](https://thenewcircle.com/s/post/1550/rxjava_reactive_extensions_in_scala_ben_christensen_matt_jacobs_video)
  * [Concurrency in Scala](http://twitter.github.io/scala_school/concurrency.html)
+ * [An Intro to Generic Numeric Programming with Spire](http://typelevel.org/blog/2013/07/07/generic-numeric-programming.html)

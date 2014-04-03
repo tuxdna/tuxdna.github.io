@@ -24,3 +24,15 @@ Includes things related to Machine Learning, Information Theory, Information Rer
  * [Streaming, Statistics and Sufficient Statistics II](http://www.youtube.com/watch?v=twdbZI0lk94)
  
  * [Streaming, Statistics and Sufficient Statistics Slides](http://simons.berkeley.edu/sites/default/files/docs/530/cormodeslides.pdf)
+
+## Tools
+
+[Bungee Project]([https://github.com/BungeeProject/bungee/)
+
+[Apache Drill](http://tech.slashdot.org/story/12/08/16/2343249/dremel-based-project-accepted-as-apache-incubator)
+
+[Pandas](http://pandas.pydata.org/)
+
+[Spark Project](http://spark-project.org/)
+
+[AMP Lab Berkeley](https://amplab.cs.berkeley.edu/)

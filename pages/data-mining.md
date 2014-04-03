@@ -60,3 +60,4 @@ This is an optimization problem and is highly desirable, however, such an optimi
 ## Data Summarization
 ### Measuring the Central Tendency
 * Geometric Mean
+

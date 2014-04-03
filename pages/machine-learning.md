@@ -771,6 +771,19 @@ Running on other data
     entropy: [[-0.2, -2.8], [-4.1, -0.1]]
 
 
+## Text Mining
+
+Discussion on [Calculate Term-Cooccurence](http://lucene.472066.n3.nabble.com/Calculate-Term-Co-occurrence-Matrix-td1226990.html)
+
+[Apache Mahout Collocations](https://cwiki.apache.org/confluence/display/MAHOUT/Collocations)
+
+High Frequency Terms/Phrases at the Index level [JIRA Ticket LUCENE-474](https://issues.apache.org/jira/browse/LUCENE-474)
+
+[What is the easiest way to implement terms association mining in Solr?](http://stackoverflow.com/questions/7393908/what-is-the-easiest-way-to-implement-terms-association-mining-in-solr)
+
+
+[Topic Modeling](http://www.cs.princeton.edu/~blei/topicmodeling.html)
+
 
 ## References:
 
