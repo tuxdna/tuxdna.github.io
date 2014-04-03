@@ -771,6 +771,30 @@ Running on other data
     entropy: [[-0.2, -2.8], [-4.1, -0.1]]
 
 
+### Different Classification Algorithms in Mahout
+
+SGD / Logistic Regression Algorithms:
+
+ * OnlineLogisticRegression
+ * AdaptiveLogisticRegression
+ * CrossFoldLearner
+
+
+Naive-Bayes Algorithm
+
+Complimentary Naive-Bayes
+
+Hidden Markov Model
+
+Random Forest
+
+Others:
+
+[What happened to SVM implementations in Mahout ?](http://stackoverflow.com/questions/10482646/recently-svm-implementation-was-added-into-mahout-i-am-planning-to-use-svm-an)
+
+
+
+
 ## Text Mining
 
 Discussion on [Calculate Term-Cooccurence](http://lucene.472066.n3.nabble.com/Calculate-Term-Co-occurrence-Matrix-td1226990.html)
