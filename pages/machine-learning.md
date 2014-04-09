@@ -833,3 +833,6 @@ High Frequency Terms/Phrases at the Index level [JIRA Ticket LUCENE-474](https:/
 
  * [An Introduction To Mahout's Logistic Regression SGD Classifier](https://blog.trifork.com/2014/02/04/an-introduction-to-mahouts-logistic-regression-sgd-classifier/)
 
+ * [Mahout Scala](http://weatheringthrutechdays.blogspot.com.br/2013/07/scala-dsl-for-mahout-in-core-linear.html)
+
+ * [Mahout SGD Example](http://skife.org/mahout/2013/02/14/first_steps_with_mahout.html)

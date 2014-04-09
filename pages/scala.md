@@ -731,3 +731,4 @@ What are the results of the following?
  * [Scala Rx talk](https://thenewcircle.com/s/post/1550/rxjava_reactive_extensions_in_scala_ben_christensen_matt_jacobs_video)
  * [Concurrency in Scala](http://twitter.github.io/scala_school/concurrency.html)
  * [An Intro to Generic Numeric Programming with Spire](http://typelevel.org/blog/2013/07/07/generic-numeric-programming.html)
+ * [Combinatorial Algorithms in Scala](http://vkostyukov.ru/posts/combinatorial-algorithms-in-scala/)
