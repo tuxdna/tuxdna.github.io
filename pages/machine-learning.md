@@ -836,3 +836,9 @@ High Frequency Terms/Phrases at the Index level [JIRA Ticket LUCENE-474](https:/
  * [Mahout Scala](http://weatheringthrutechdays.blogspot.com.br/2013/07/scala-dsl-for-mahout-in-core-linear.html)
 
  * [Mahout SGD Example](http://skife.org/mahout/2013/02/14/first_steps_with_mahout.html)
+
+ * [Converting Similariy to Distance and vice-versa](http://stackoverflow.com/questions/4064630/how-do-i-convert-between-a-measure-of-similarity-and-a-measure-of-difference-di)
+
+ * [Probability Distributions in R](http://www.cyclismo.org/tutorial/R/probability.html)
+
+
