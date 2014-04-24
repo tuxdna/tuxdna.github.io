@@ -90,22 +90,18 @@ Also:
 
 ## Setup
 
-Format the nodename
+Fetch a Hadoop tarball `hadoop-1.2.1-bin.tar.gz` and then:
 
-    hadoop namenode -format
+    $ tar zxf hadoop-1.2.1-bin.tar.gz
+	$ cd hadoop-1.2.1
+	$ export PATH=`pwd`/bin:$PATH
 
-Deleting a folder on HDFS:
+**Update `core-site.xml` for**
 
-    hadoop fs -rmr wc-out
+ * `fs.default.name` value to `hdfs://localhost:9000`
+ * location of HDFS data path where filesystem is created
 
-Executing some Job:
-
-    export HADOOP_CLASSPATH=/home/tuxdna/hadoop-book/ch02/target/ch02-3.0.jar
-    hadoop alice.WordCountDriver file:///path/to/input output/
-
-To make a copy from one hadoop cluster to another, use `distcp` command.
-
-Specifying location of HDFS data path where filesystem is created ( `core-site.xml` ):
+File: `core-site.xml`
 
     <?xml version="1.0"?>
     <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -118,10 +114,61 @@ Specifying location of HDFS data path where filesystem is created ( `core-site.x
          </property>
          <property>
            <name>hadoop.tmp.dir</name>
-           <value>/home/tuxdna/tmp/hadoop-${user.name}</value>
-	   <description>A base for other temporary directories.</description>
+           <value>/home/tuxdna/tmp/hadoop-1.2.1-${user.name}</value>
+           <description>A base for other temporary directories.</description>
          </property>
     </configuration>
+
+
+
+**Update `hdfs-site.xml` for `dfs.replication` value**
+
+File `hdfs-site.xml`:
+
+    <?xml version="1.0"?>
+    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+    
+    <property>
+             <name>dfs.replication</name>
+             <value>1</value>
+    </property>
+    </configuration>
+    
+
+**Update `mapred-site.xml` for `mapred.job.tracker` value**
+
+File `mapred-site.xml`:
+
+    <?xml version="1.0"?>
+    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+    
+    <configuration>
+    <property>
+             <name>mapred.job.tracker</name>
+             <value>localhost:9101</value>
+    </property>
+    </configuration>
+    
+### Setup the HDFS directory
+
+Format the nodename
+
+    hadoop namenode -format
+
+## Start the single node cluster
+
+    $ bin/start-all.sh
+
+Deleting a folder on HDFS:
+
+    hadoop fs -rmr wc-out
+
+Executing some Job:
+
+    export HADOOP_CLASSPATH=/home/tuxdna/hadoop-book/ch02/target/ch02-3.0.jar
+    hadoop alice.WordCountDriver file:///path/to/input output/
+
+To make a copy from one hadoop cluster to another, use `distcp` command.
 
 
 ## HAR files
@@ -176,3 +223,6 @@ HDFS UI: [dfshealth.jsp](http://localhost:50070/dfshealth.jsp)
 
 JobTracker UI: [jobtracker.jsp](http://localhost:50030/jobtracker.jsp)
 
+# References
+
+ * [hadoop job tracker cannot start up](http://stackoverflow.com/questions/16296589/hadoop-job-tracker-cannot-start-up)
