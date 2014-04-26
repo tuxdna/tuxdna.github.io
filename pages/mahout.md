@@ -785,5 +785,3 @@ High Frequency Terms/Phrases at the Index level [JIRA Ticket LUCENE-474](https:/
 
  * [Word Space Model](http://su.diva-portal.org/smash/get/diva2:189276/FULLTEXT01) by Magnus Sahlgren
 
-
-
