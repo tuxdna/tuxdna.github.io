@@ -565,6 +565,14 @@ Partial examples of: `Future { block }`, `onComplete`, `recover`, `recoverWith`,
   
     sbt "show compile:dependency-classpath"
     sbt "show compile:dependency-classpath" | grep -B1 'success' | head -1 > output.txt
+    
+ 
+ [Sbt print dependency classpath for use in an environment variable](http://stackoverflow.com/questions/23296064/sbt-print-dependency-classpath-for-use-in-an-environment-variable/23296445)
+ 
+    sbt "export  compile:dependency-classpath"
+    sbt "export  compile:full-classpath"
+ 
+ 
 
 ## Tips n Tricks
 
