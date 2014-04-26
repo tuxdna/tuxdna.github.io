@@ -90,11 +90,12 @@ Also:
 
 ## Setup
 
-Fetch a Hadoop tarball `hadoop-1.2.1-bin.tar.gz` and then:
+Setup hadoop-1.2.1: Fetch a Hadoop tarball `hadoop-1.2.1-bin.tar.gz` and then
 
+    $ http://mirror.metrocast.net/apache/hadoop/common/hadoop-1.2.1/hadoop-1.2.1-bin.tar.gz
     $ tar zxf hadoop-1.2.1-bin.tar.gz
-	$ cd hadoop-1.2.1
-	$ export PATH=`pwd`/bin:$PATH
+    $ cd hadoop-1.2.1
+    $ export PATH=`pwd`/bin:$PATH
 
 **Update `core-site.xml` for**
 
@@ -159,11 +160,31 @@ Format the nodename
 
     $ bin/start-all.sh
 
+Setup ssh-keys for passphrase-less login
+
+    $ ssh-copy-id localhost
+    $ hadoop namenode -format
+    $ start-all.sh
+    $ hadoop fs -put conf input
+
+Now we can browse the files and track the jobs:
+
+ * [dfshealth.jsp](http://localhost:50070/dfshealth.jsp)
+ * [jobtracker.jsp](http://localhost:50030/jobtracker.jsp)
+
+Run sample hadoop job
+
+    $ hadoop fs -put conf/*.xml input
+    $ hadoop jar hadoop-examples-*.jar grep input output 'dfs[a-z.]+'
+    $ hadoop fs -cat output/*
+    1       dfs.replication
+    1       dfsadmin
+
 Deleting a folder on HDFS:
 
     hadoop fs -rmr wc-out
 
-Executing some Job:
+Executing some other Job:
 
     export HADOOP_CLASSPATH=/home/tuxdna/hadoop-book/ch02/target/ch02-3.0.jar
     hadoop alice.WordCountDriver file:///path/to/input output/
