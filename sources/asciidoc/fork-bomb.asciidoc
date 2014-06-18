@@ -1,0 +1,170 @@
+\{% include JB/setup %}
+
+[[fork-bomb-explanation]]
+Fork Bomb explanation
+---------------------
+
+-------------------------------------------------------------------------------
+Hi,
+
+I got following cute little code at http://en.wikipedia.org/wiki/Fork_bomb :
+
+:(){ :|:& };:
+
+I tried to figure out how it does what it is intended to. Here are my insights:
+
+: is a Bash Shell's no-op ( no operation ) literal, which can be used
+as 'true' also.
+| is pipe
+& is to create processes in background
+{ } is a code block
+; is command separator
+() is
+
+First execute and verify the behaviour of :
+
+[shell]$ :
+
+Now execute this :
+
+[shell]$ :(){ echo "in background"& }
+
+redefines : to behave like a function which executes the command,
+
+echo "in background"&
+
+Now try this
+
+[shell]$ :
+
+in background
+[2] 24399 ( some process id here )
+
+
+Therefore,
+
+:(){ :|:& };:
+
+redefines : and calls once inside { } block and once after semicolon
+;: , recursively!
+
+
+I would like to know why,
+
+[shell]$ :(){ echo "in background"& }
+
+works?
+
+[shell]$ :(){ echo "in background" }  -- NOTE: no ampersand( & ) here!
+
+does not work?
+
+Did I miss any point in here?
+
+
+
+> I would like to know why,
+> [shell]$ :(){ echo "in background"& }
+> works?
+> [shell]$ :(){ echo "in background" }  -- NOTE: no ampersand( & ) here!
+> does not work?
+
+Interesting fork-bomb - probably the shortest possible.
+The ":" could have been any char usable as a variable like say "_" but
+: looks neat because it is thin and is not an alphabet :)
+If you do
+[shell]$ :(){ echo "in background"; };
+it will work. I think "&" takes out the need for the ";" as end of line
+
+
+Responses inline.
+
+--- tuxdna <tuxdna@gmail.com> wrote:
+
+> 
+> :(){ :|:& };:
+>  
+> : is a Bash Shell's no-op ( no operation ) literal,
+> which can be used
+> as 'true' also.
+
+Hmm, I've never heard the character : referred to as
+such. Perhaps someone can comment on this, although I
+doubt this is the case. IMO, the use of : is just to
+obfuscate the fact that its a function name - it could
+as easily be a or b or c, or fun.
+
+If that were the case, things would look familiar I'd
+expect -
+
+:(){ :|:& };:
+fun( { fun|fun& };fun
+
+Declare function fun which calls itself and pipes the
+output into another background process. The last
+invocation of fun after the ; starts the entire thing.
+
+> [shell]$ :(){ echo "in background"& } 
+> works?
+> 
+> [shell]$ :(){ echo "in background" }  -- NOTE: no
+> ampersand( & ) here!
+
+Try it with a semi colon. :(){ echo "foo"; };
+
+In the case without the ; inside - its a background
+process, being given as a single command. Its
+interpreted the same way you'd write 
+
+$ echo "foo" 
+
+without a ;. But in a for or do loop - you'd need the
+; to end the line.
+
+Whats interesting here is how the :|:& is being used -
+this exponentially increases the number of processes
+spawned! Basically, pipes the output of one : into the
+other background process..
+
+
+Cheers,
+Viksit
+
+
+
+> --- tuxdna <tuxdna@gmail.com> wrote:
+> > :(){ :|:& };:
+> > :
+> > : is a Bash Shell's no-op ( no operation ) literal,
+> >
+> > which can be used
+> > as 'true' also.
+>
+> Hmm, I've never heard the character : referred to as
+> such. Perhaps someone can comment on this, although I
+> doubt this is the case. IMO, the use of : is just to
+> obfuscate the fact that its a function name - it could
+> as easily be a or b or c, or fun.
+
+From man bash:
+
+SHELL BUILTIN COMMANDS
+       Unless otherwise noted, each builtin command documented in this 
+section as accepting options preceded by - accepts -- to signify the 
+end of the options.  For example, the :, true, false, and  test 
+builtins  do  not accept options.
+       : [arguments]
+              No  effect;  the command does nothing beyond expanding 
+arguments and performing any specified redirections.  A zero exit code  
+is returned.
+
+So effectively a no-op returning true.  I use constructs of the form
+
+  while : ; do ... done
+
+to make effectively infinite looks all the time.
+
+Regards,
+
+-- Raju
+-------------------------------------------------------------------------------

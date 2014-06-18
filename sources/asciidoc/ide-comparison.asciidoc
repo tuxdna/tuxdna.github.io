@@ -1,0 +1,63 @@
+\{% include JB/setup %}
+
+[[this-is-a-comparison-of-integrated-development-environment-and-tools-that-i-have-used]]
+This is a comparison of Integrated Development Environment and Tools
+that I have used
+-------------------------------------------------------------------------------------
+
+[[eclipse]]
+Eclipse
+~~~~~~~
+
+* PROS
+* cross platform
+* modularized
+* UI - very nice and extensible
+* supports plugins
+* lots of ready-made plugins
+* CONS
+* memory hog
+* still lacks good defaults
+* cross toolchains don't work out-of-the-box, manual configuration
+needed
+* give the plethora of customizatin, it still lacks good documentation
+
+[[anjuta-ide]]
+Anjuta IDE
+~~~~~~~~~~
+
+* PROS
+* good architecture
+* plugin based
+* lots of plugins
+* supports autotools
+* integrated GUI designer - Glade
+* CONS
+* cumbersome GObject based C classes
+* difficult to maintain
+* GNOME specific ( hence not really cross platform )
+* works only on UNIX
+* C, C++, Python only
+
+[[kdevelop]]
+KDevelop
+~~~~~~~~
+
+* PROS
+* good architecture
+* support for many languages
+* CONS
+* pulls in all KDE libs
+* KDE specific
+
+[[qt-creator]]
+Qt Creator
+~~~~~~~~~~
+
+* PROS
+* nice GUI designer
+* more or less, the functionaly is comparable to KDevelop
+* Cons
+* C, C++ only
+* QMake, CMake projects only
+

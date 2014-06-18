@@ -1,0 +1,70 @@
+\{% include JB/setup %}
+
+User Guide:
+http://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_MRG/1.3/html/Messaging_User_Guide/chap-Messaging_User_Guide-Exchanges.html
+
+Key terms:
+
+* Virtual Host
+* Broker
+* Message
+* Publisher
+* Consumer
+* Exchange
+* Binding
+* Queue
+
+Virtual Host consists of:
+
+* namespace
+* exchange
+* message queues
+* associated objects
+
+Exchange receives a message from producer and routes it to a queue. The
+routing criteria is defined by the binding between Exchange and Queue.
+
+Exchange Type:
+
+* Fanout Exchange
+* Exchange sends the message to every queue bound to that exchange.
+** No routing key required
+** What goes in must come out
+** Fanout exchange named "amq.fanout" is alwyas pre-created in each
+vritual host
+* Default Exchange
+* Routing key is same as name of the queue.
+** in AMQP-10 every queue is bound the the default exchange.
+** in AMQP-10 every exchange except default has a name.
+** if a message is sent to a broker without specifying an exchange name,
+it is sent to the default exchange, which has no name.
+* Direct Exchange
+* Exchange sends the message to a queue if the message's routing is
+identical to the binding key for the queue.
+** Uses String as routing key.
+** Queue binds to the exchange with key K
+** Publisher sends a message with key R
+** Message is passed to this queue if K=R
+** Direct exchange named "amq.direct" is alwyas pre-created in each
+vritual host
+* Topic Exchange
+* Uses pattern as routing key ("a.b.c.d").
+* Queues can use wildcard characters in binding key.
+* `*` matches a single word.
+* [[matches-zero-or-more-words.]]
+matches zero or more words.
+---------------------------
+* "amq.topic" is pre-created in each virtual host.
+* `*.stock.#` matches usd.stock and eur.stock.db but not stock.nasdaq
+* Headers Exchange
+* Allows simple queries on properties in the headers of a message
+** in AMQP-10 every broker contains predeclared exchange named
+"amq.match"
+* Custom / XML Exchange
+* Exchange can be defiled using XML XQuery to specify set of conditions
+on the structure of XML message / headers.
+
+Apache Qpid
+
+types of exchanges: * fanout exchange * direct exchange * topic exchange
+* header exchange - wildcard * xml exchange

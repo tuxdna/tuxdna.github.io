@@ -1,0 +1,60 @@
+\{% include JB/setup %}
+
+[[notes-on-community]]
+Notes on Community:
+-------------------
+
+* belief, capital, economics, _belonging_
+* communication - word, art, action, emution
+* no one works for free
+* be yourself
+
+[[a-market]]
+a market
+~~~~~~~~
+
+* information flows smoothly
+* people can be trusted to live upto their promise
+* competition is fostered
+* property rights are protected but not overprotected
+* damaging side effects on third parties are curtailed
+
+[[section]]
+.
+~
+
+* social capital
+* processes
+* opportunity
+* imagination
+
+[[section-1]]
+.
+~
+
+* individual is helpless socially, if left to himself
+
+[[section-2]]
+.
+~
+
+* why is linux successful?
+* open communication
+* licensing of work
+* open tools
+
+[[section-3]]
+.
+~
+
+* community manager - "enable" people to make things happen
+
+[[section-4]]
+.
+~
+
+* Respect is a wonderful gift and you should cherish it and protect it
+at all costs.
+* Getting that respect back after you've lost it, is a near-impossible
+task.
+

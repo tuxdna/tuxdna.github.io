@@ -1,0 +1,21 @@
+\{% include JB/setup %}
+
+[[ip-tables-linux-kernel]]
+IP Tables / Linux Kernel
+------------------------
+
+[[ip-nating]]
+IP NATing
+~~~~~~~~~
+
+[[enable-ip-masquerading]]
+Enable IP Masquerading
+~~~~~~~~~~~~~~~~~~~~~~
+
+------------------------------------------------------------------------------------
+# echo 1 > /proc/sys/net/ipv4/ip_forward
+# iptables -A FORWARD -i wlan0 -o em1 -m state --state ESTABLISHED,RELATED -j ACCEPT
+# iptables -A FORWARD -i wlan0 -o em1 -j ACCEPT
+# iptables -t nat -A POSTROUTING -o em1 -j MASQUERADE
+# iptables -L
+------------------------------------------------------------------------------------

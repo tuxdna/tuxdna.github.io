@@ -1,0 +1,105 @@
+\{% include JB/setup %}
+
+[[android-sdk]]
+Android SDK
+-----------
+
+[[very-old-android-android-sdk-tutorial]]
+Very old Android Android SDK Tutorial
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[[quick-start]]
+Quick Start
+^^^^^^^^^^^
+
+---------------------------------------------------------------------------------------------------------------
+Follow these simple steps to Start working in the Android SDK
+(I use Emacs for development.)
+
+1. Download and Install SunJDK5 in /opt/jdk
+sudo apt-get install sun-java5-jdk
+add in ~/.bashrc : export PATH=/opt/jdk/bin:$PATH
+
+2. Download and Install ant
+sudo apt-get install ant
+
+3. Downloaded and install the Android SDK 
+
+4. Install JDE for Java and Emacs integration
+sudo apt-get install jde
+
+5. Create the sample projects and run them on Emulator
+
+6. Figure out the following 
+Read about the remote debugging feature of GDB -- using gdbserver . Hope it helps in Emacs for remote debugging
+
+7. Setting up the Dev Environment:
+## settings for Android SDK
+export SDK_HOME=/full/path/to/android_sdk_linux_m3-rc20a
+alias ancr="$SDK_HOME/tools/activityCreator.py"
+alias adb="$SDK_HOME/tools/adb"
+alias anemu="$SDK_HOME/tools/emulator"
+## export JAVA_HOME=`which java`
+---------------------------------------------------------------------------------------------------------------
+
+Start the emulator:
+
+-------
+anemu &
+-------
+
+Create a project like this:
+
+-------------------------------------------------------
+ancr --out AndroidHello com.google.android.AndroidHello
+-------------------------------------------------------
+
+Build the project:
+
+----
+ant 
+----
+
+Copy the generated .apk file to emulator:
+
+-------------------------------------------------------
+adb push AndroidHello.apk    /data/app/AndroidHello.apk
+-------------------------------------------------------
+
+[[here-are-the-gory-details]]
+HERE ARE THE GORY DETAILS
++++++++++++++++++++++++++
+
+--------------------------------------------------
+activityCreator.py --- generates stubs, build file
+--------------------------------------------------
+
+The activityCreator script generates the following files and directories
+(but will not overwrite existing ones):
+
+-----------------------------------------------------------------------------------------------------------------------
+* AndroidManifest.xml The application manifest file, synced to the specified Activity class for the project.
+* build.xml An Ant file that you can use to build/package the application.
+* src/your/package/name/ActivityName.java The Activity class you specified on input.
+* your_activity.iml, your_activity.ipr, your_activity.iws    [only with the -ide intelliJ flag] intelliJ project files.
+* res/   A directory to hold resources.
+* src/    The source directory.
+* bin/    The output directory for the build script.
+-----------------------------------------------------------------------------------------------------------------------
+
+Building Android Appication:
+
+Uses the build.xml file generated using activityCreator.py
+
+To build just type ant in to directory where build.xml is generated.
+
+Running app: use adb tool to upload .apk file to /data/app/ at emulator
+
+----------------------------------------------
+1. start the emulator $SDK_HOME/tools/emulator
+2. goto home by pressing Home key
+3. adb install myproject/bin/<appname>.apk
+4. select app in emulator and run it
+----------------------------------------------
+
+Debugger: to run DDMS, simply type ddms

@@ -1,0 +1,41 @@
+\{% include JB/setup %}
+
+[[data-science]]
+Data Science
+------------
+
+Some notes and resources on Data Science
+
+Includes things related to Machine Learning, Information Theory,
+Information Rertrieval etc.
+
+* http://radar.oreilly.com/2010/06/what-is-data-science.html[What is
+Data Science?]
+*
+http://radar.oreilly.com/2011/09/building-data-science-teams.html[Building
+Data Science teams]
+*
+http://georgemdallas.wordpress.com/2013/10/30/principal-component-analysis-4-dummies-eigenvectors-eigenvalues-and-dimension-reduction/[PCA
+for Dummies]
+* http://www.youtube.com/watch?v=-QSkMcPmXN8[Streaming, Statistics and
+Sufficient Statistics I]
+* http://www.youtube.com/watch?v=twdbZI0lk94[Streaming, Statistics and
+Sufficient Statistics II]
+*
+http://simons.berkeley.edu/sites/default/files/docs/530/cormodeslides.pdf[Streaming,
+Statistics and Sufficient Statistics Slides]
+
+[[tools]]
+Tools
+~~~~~
+
+[https://github.com/BungeeProject/bungee/[Bungee Project]
+
+http://tech.slashdot.org/story/12/08/16/2343249/dremel-based-project-accepted-as-apache-incubator[Apache
+Drill]
+
+http://pandas.pydata.org/[Pandas]
+
+http://spark-project.org/[Spark Project]
+
+https://amplab.cs.berkeley.edu/[AMP Lab Berkeley]
