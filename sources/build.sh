@@ -1,5 +1,10 @@
 #!/bin/bash
 
+## Install asciidoctor
+## Ubuntu: sudo apt-get install rubygem-asciidoctor
+## Fedora: sudo yum install -y rubygem-asciidoctor
+
+
 OUTPUT_DIR=html
 mkdir -p $OUTPUT_DIR
 
