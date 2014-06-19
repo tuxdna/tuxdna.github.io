@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[what-is-nosql]]
 What is NoSQL ?

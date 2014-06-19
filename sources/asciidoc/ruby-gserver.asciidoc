@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[a-simple-server-in-ruby]]
 A simple server in Ruby

@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[ruby-programming-language]]
 Ruby Programming Language

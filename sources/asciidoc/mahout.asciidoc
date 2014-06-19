@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[apache-mahout]]
 Apache Mahout

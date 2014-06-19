@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[information-retrieval]]
 Information Retrieval

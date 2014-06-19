@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[ip-tables-linux-kernel]]
 IP Tables / Linux Kernel

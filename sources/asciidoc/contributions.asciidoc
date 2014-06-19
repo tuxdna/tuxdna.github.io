@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[my-contributions-so-far]]
 My contributions so far

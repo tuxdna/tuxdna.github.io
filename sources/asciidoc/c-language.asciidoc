@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[glibc-memory-allocation]]
 GlibC Memory Allocation

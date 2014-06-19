@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 User Guide:
 http://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_MRG/1.3/html/Messaging_User_Guide/chap-Messaging_User_Guide-Exchanges.html

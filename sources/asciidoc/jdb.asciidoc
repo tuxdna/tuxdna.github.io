@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[jdb-java-debugger]]
 JDB: Java Debugger

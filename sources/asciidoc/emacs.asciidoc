@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[emacs-org-mode]]
 Emacs Org Mode
