@@ -9,9 +9,15 @@ What is Data Mining?
 
 It refers to extracting or mining knowledge from large amounts of data.
 
-Steps in Data Mining: * Data cleaning * Data integration * Data
-selection * Data transformation * Data mining * Pattern evaluation *
-Knowldege presentation
+Steps in Data Mining:
+
+ * Data cleaning
+ * Data integration
+ * Data selection
+ * Data transformation
+ * Data mining
+ * Pattern evaluation
+ * Knowldege presentation
 
 Data Mining is an interdiciplinary field which is a confluence of:
 

@@ -1,25 +1,33 @@
+:doctype: book
 
-Akka
+[[akka]]
+= Akka
 
 http://www.slideshare.net/scalaconfjp/scaling-software-with-akka[Scaling
 Software With Akka]
 
 Manage System Overload
 
-Automatic Replication & Distributio for Fault-tolearance & Scalability
+Automatic Replication & Distribution for Fault-tolearance & Scalability
 
-Program at a Higher Level * Never think in terms of shared state, shared
-visiblity, threads, locks, concurrent collections, thread notifications
-etc. * You only think about messages flow in the system * You get high
-CPU utilization, low latency, high throughput and scalability * Proven
-and superior model for detecting and recovering from errors
+Program at a Higher Level
 
-Distributed by design * Actors are location transparent & distributed by
-design * Scale UP and OUT for free as part of the model * perfect fabric
-for the cloud * elastic & dymanic * fault-tolerant & self-healing *
-adaptive load-balancing, cluster rebalancing & actor migration * build
-extremely loosely coupled and dynamic systems that can cnage and adapt
-at runtime
+ * Never think in terms of shared state, shared visiblity, threads, locks, concurrent collections, thread notifications etc.
+ * You only think about messages flow in the system
+ * You get high CPU utilization, low latency, high throughput and scalability
+ * Proven and superior model for detecting and recovering from errors
+
+Distributed by design
+
+ * Actors are location transparent & distributed by design
+ * Scale UP and OUT for free as part of the model
+ * perfect fabric for the cloud
+ * elastic & dymanic
+ * fault-tolerant & self-healing
+ * adaptive load-balancing, cluster rebalancing & actor migration
+ * build extremely loosely coupled and dynamic systems that can cnage and adapt at runtime
+
+== Actor
 
 What is an Actor?
 
@@ -35,7 +43,7 @@ What is an Actor?
 Actor operations * DEFINE * CREATE * SEND * BECOME * SUPERVISE
 
 [[define]]
-DEFINE
+=== DEFINE
 ~~~~~~
 
 -----------------------------------------------------
@@ -49,7 +57,7 @@ class GreetingActor extends Actor with ActorLogging {
 -----------------------------------------------------
 
 [[create]]
-CREATE
+=== CREATE
 ~~~~~~
 
 Actor encapsulates: state, behaviour and message queue
@@ -60,46 +68,19 @@ val greeter = system.actorOf(Props[GreetingActor], name = "greeter")
 --------------------------------------------------------------------
 
 [[send]]
-SEND
+=== SEND
 ~~~~
 
 ------------------------------------
 greeter ! Greeting("Charlie Parker")
 ------------------------------------
 
-[[load-balancing]]
-Load Balancing
-^^^^^^^^^^^^^^
-
-_Routers + Resizer_
-
-Only Router:
-
----------------------------------------
-val router =
- system.actorOf(
-  Props[SomeActor].withRouter(
-  RoundRobinRouter(nrOfInstances = 5)))
----------------------------------------
-
-Router and Resizer:
-
--------------------------------------------------
-val resizer =
-  DefaultResizer(lowerBound = 2, upperBound = 15)
-
-val router =
- system.actorOf(
-  Props[ExampleActor1].withRouter(
-    RoundRobinRouter(resizer = Some(resizer))))
--------------------------------------------------
-
 [[become]]
-BECOME
+=== BECOME
 ~~~~~~
 
 [[supervise]]
-SUPERVISE
+=== SUPERVISE
 ~~~~~~~~~
 
 Manage other failures of another Actor(s)
@@ -175,3 +156,31 @@ akka.actor.deployment {
    }
 } 
 ----------------------------------------
+
+[[load-balancing]]
+== Load Balancing
+^^^^^^^^^^^^^^
+
+_Routers + Resizer_
+
+Only Router:
+
+---------------------------------------
+val router =
+ system.actorOf(
+  Props[SomeActor].withRouter(
+  RoundRobinRouter(nrOfInstances = 5)))
+---------------------------------------
+
+Router and Resizer:
+
+-------------------------------------------------
+val resizer =
+  DefaultResizer(lowerBound = 2, upperBound = 15)
+
+val router =
+ system.actorOf(
+  Props[ExampleActor1].withRouter(
+    RoundRobinRouter(resizer = Some(resizer))))
+-------------------------------------------------
+

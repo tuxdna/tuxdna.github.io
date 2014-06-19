@@ -1,13 +1,12 @@
-
+:doctype: book
 [[hadoop-in-an-nutshell]]
 Hadoop in an nutshell
 ---------------------
 
-Hadoop terminology
+== Hadoop terminology
 
 [[job-tracker]]
-Job Tracker
-^^^^^^^^^^^
+=== Job Tracker
 
 https://wiki.apache.org/hadoop/JobTracker[JobTracker]
 
@@ -15,8 +14,8 @@ The JobTracker is the service within Hadoop that farms out MapReduce
 tasks to specific nodes in the cluster
 
 [[task-tracker]]
-Task Tracker
-^^^^^^^^^^^^
+=== Task Tracker
+
 
 https://wiki.apache.org/hadoop/TaskTracker[Task Tracker]
 
@@ -24,8 +23,7 @@ A TaskTracker is a node in the cluster that accepts tasks - Map, Reduce
 and Shuffle operations - from a JobTracker.
 
 [[name-node]]
-Name Node
-^^^^^^^^^
+=== Name Node
 
 https://wiki.apache.org/hadoop/NameNode[Name Node]
 
@@ -35,22 +33,19 @@ https://wiki.apache.org/hadoop/NameNode[Name Node]
 * Does YARN provide HA?
 
 [[secondary-name-node]]
-Secondary Name Node
-^^^^^^^^^^^^^^^^^^^
+=== Secondary Name Node
 
 A secondary ( backup node ) for name node
 
 [[data-node]]
-Data Node
-^^^^^^^^^
+=== Data Node
 
 https://wiki.apache.org/hadoop/DataNode[Data Node]
 
 Keeps actual data of files in HDFS
 
 [[hadoop-ecosystem]]
-Hadoop Ecosystem:
-~~~~~~~~~~~~~~~~~
+== Hadoop Ecosystem
 
 * Avro - serialization system
 * MapReduce - data processing framework
@@ -63,23 +58,21 @@ Hadoop Ecosystem:
 * Common - filesystem and I/O library
 
 [[why-mapreduce]]
-Why MapReduce ?
-~~~~~~~~~~~~~~~
+== Why MapReduce ?
 
 Three problems that it solves: * dividing the work into equal-pieces *
 combining the result from independent processes run against pieces made
 above * limited capacity of a single machine
 
 [[before-you-begin]]
-Before you begin
-~~~~~~~~~~~~~~~~
+=== Before you begin
+
 
 Read: https://wiki.apache.org/hadoop/GettingStartedWithHadoop[Getting
 Started with Hadoop]
 
 [[hdfs]]
-HDFS
-~~~~
+= HDFS
 
 HDFS
 
@@ -97,8 +90,8 @@ Also:
 `org.apache.hadoop.util.Progressable`
 
 [[setup]]
-Setup
-~~~~~
+== Setup
+
 
 Setup hadoop-1.2.1: Fetch a Hadoop tarball `hadoop-1.2.1-bin.tar.gz` and
 then
@@ -167,8 +160,7 @@ File `mapred-site.xml`:
 -----------------------------------------------------------
 
 [[setup-the-hdfs-directory]]
-Setup the HDFS directory
-^^^^^^^^^^^^^^^^^^^^^^^^
+=== Setup the HDFS directory
 
 Format the nodename
 
@@ -177,8 +169,7 @@ hadoop namenode -format
 -----------------------
 
 [[start-the-single-node-cluster]]
-Start the single node cluster
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Start the single node cluster
 
 ------------------
 $ bin/start-all.sh
@@ -224,8 +215,7 @@ hadoop alice.WordCountDriver file:///path/to/input output/
 To make a copy from one hadoop cluster to another, use `distcp` command.
 
 [[har-files]]
-HAR files
-~~~~~~~~~
+=== HAR files
 
 Create a hadoop archive
 
@@ -260,8 +250,7 @@ drwxr-xr-x   - tuxdna supergroup          0 2014-03-07 19:02 /user/tuxdna/alice.
 -----------------------------------------------------------------------------------------------------------------
 
 [[cluster-setup]]
-Cluster Setup
-~~~~~~~~~~~~~
+= Cluster Setup
 
 Setting up a multi-node cluster:
 
@@ -269,29 +258,26 @@ http://www.michael-noll.com/tutorials/running-hadoop-on-ubuntu-linux-multi-node-
 Hadoop on Ubuntu Linux (Multi-Node Cluster)]
 
 [[run-jobs]]
-Run jobs
-~~~~~~~~
+== Run jobs
 
 Executing MapReduce Jobs:
 
 ------------------------------------------------------
 HADOOP_USER_NAME=hduser
-HADOOP_DIR=/home/hduser/hadoop-1.1.1
+Hadoop_DIR=/home/hduser/hadoop-1.1.1
 HADOOP_CLASSPATH=/tmp/target/ch02-3.0.jar
 hadoop pirates.Driver pirates/input.txt pirates/output
 ------------------------------------------------------
 
 [[web-ui]]
-Web UI
-~~~~~~
+== Web UI
 
 HDFS UI: http://localhost:50070/dfshealth.jsp[dfshealth.jsp]
 
 JobTracker UI: http://localhost:50030/jobtracker.jsp[jobtracker.jsp]
 
 [[references]]
-References
-----------
+== References
 
 *
 http://stackoverflow.com/questions/16296589/hadoop-job-tracker-cannot-start-up[hadoop
