@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[this-is-a-comparison-of-integrated-development-environment-and-tools-that-i-have-used]]
 This is a comparison of Integrated Development Environment and Tools

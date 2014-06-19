@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[create-a-gem-rpm]]
 Create a gem rpm

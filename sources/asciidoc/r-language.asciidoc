@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[r---statistical-programming-language]]
 R - Statistical Programming Language

@@ -1,4 +1,3 @@
-\{% include JB/setup %}
 
 [[etherpad-lite-on-fedora-14]]
 Etherpad Lite on Fedora 14
