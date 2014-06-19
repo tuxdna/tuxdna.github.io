@@ -1,3 +1,7 @@
+:doctype: book
+
+[[nosql]]
+= NoSQL
 
 [[what-is-nosql]]
 What is NoSQL ?

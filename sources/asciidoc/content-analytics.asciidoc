@@ -1,0 +1,16 @@
+:doctype: book
+
+[[content-analytics]]
+= Content Analytics Tools and Techniques
+
+include::data-mining.asciidoc[]
+
+include::data-science.asciidoc[]
+
+include::machine-learning.asciidoc[]
+
+include::mahout.asciidoc[]
+
+include::nlp.asciidoc[]
+
+include::nosql.asciidoc[]
